@@ -1,0 +1,11 @@
+.wp-block-cover {
+    .wp-block-cover__image-background {
+        background-size: cover !important;
+    }
+
+    &.bg-cover {
+        .wp-block-cover__image-background {
+            background-size: initial !important;
+        }
+    }
+}

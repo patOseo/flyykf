@@ -1,0 +1,98 @@
+{
+    "version": 2,
+    "styles": {
+        "blocks": {
+            "core/button": {
+                "typography": {
+                    "fontWeight": "700",
+                    "textTransform": "uppercase",
+                    "letterSpacing": "2px",
+                    "fontStyle": "normal"
+                },
+                "color": {
+                    "background": "var(--wp--preset--color--amber)",
+                    "text": "var(--wp--preset--color--truewhite)"
+                },
+                "border": {
+                    "radius": "0px"
+                },
+                "spacing": {
+                    "padding": ".5rem 3rem"
+                }
+            }
+        }
+    },
+    "settings": {
+        "spacing": {
+			"margin": true,
+			"padding": true
+		},
+        "typography": {
+            "fontWeight": true,
+            "lineHeight": true
+        },
+        "color": {
+            "palette": [
+                {
+                    "slug": "lightblue",
+                    "color": "#19BEE6",
+                    "name": "Light Blue"
+                },
+                {
+                    "slug": "darkblue",
+                    "color": "#036ab4",
+                    "name": "Dark Blue"
+                },
+                {
+                    "slug": "yellow",
+                    "color": "#f0d22d",
+                    "name": "Yellow"
+                },
+                {
+                    "slug": "amber",
+                    "color": "#EAAF0F",
+                    "name": "Amber"
+                },
+                {
+                    "slug": "lime",
+                    "color": "#bdc844",
+                    "name": "Lime"
+                },
+                {
+                    "slug": "green",
+                    "color": "#28ab51",
+                    "name": "Green"
+                },
+                {
+                    "slug": "truewhite",
+                    "color": "#fff",
+                    "name": "True White"
+                },
+                {
+                    "slug": "offwhite",
+                    "color": "#f5f5f7",
+                    "name": "Off White"
+                },
+                {
+                    "slug": "midgrey",
+                    "color": "#AFAFAF",
+                    "name": "Mid Grey"
+                },
+                {
+                    "slug": "darkgrey",
+                    "color": "#3E3E3E",
+                    "name": "Dark Grey"
+                },
+                {
+                    "slug": "black",
+                    "color": "#111111",
+                    "name": "Black"
+                }
+            ]
+        },
+        "layout": {
+            "contentSize": "1152px",
+            "wideSize": "1920px"
+        }
+    }
+}

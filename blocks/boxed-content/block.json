@@ -1,0 +1,22 @@
+{
+    "name": "acf/boxed-content",
+    "title": "Boxed Content",
+    "description": "A custom block for boxed content.",
+    "category": "ykf-blocks",
+    "icon": "text-page",
+    "keywords": ["content", "boxed"],
+    "supports": {
+        "align": true,
+        "jsx": true
+    },
+    "attributes": {
+        "align": {
+            "type": "string",
+            "default": "full"
+        }
+    },
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "block-boxed-content.php"
+    }
+}

@@ -1,0 +1,16 @@
+{
+    "name": "acf/accordion",
+    "title": "Accordion",
+    "description": "A custom block to display an FAQ-style accordion.",
+    "category": "ykf-blocks",
+    "icon": "excerpt-view",
+    "keywords": ["accordion", "faq", "dropdown"],
+    "align": "full",
+    "supports": {
+        "align": false
+    },
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "block-accordion.php"
+    }
+}

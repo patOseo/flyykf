@@ -1,0 +1,24 @@
+.block-destinations {
+    .destination-card {
+        transition: .3s;
+
+        .destination-image {
+            img {
+                transition: transform .5s;
+            }
+        }
+
+        &:hover {
+            .destination-image {
+                img {
+                    transform: scale(1.1);
+                }
+            }
+        }
+    
+        &.active {
+            box-shadow: 0 .125rem 1.5rem rgba($darkblue, .6) !important;
+            transform: scale(1.05);
+        }
+    }
+}

@@ -1,0 +1,27 @@
+body {
+    -webkit-font-smoothing: antialiased;
+}
+
+.fs-sm {
+    font-size: $font-size-sm;
+}
+
+.fs-xs {
+    font-size: .75rem;
+}
+
+.ls-1 {
+    letter-spacing: 1px;
+}
+
+.ls-md {
+    letter-spacing: 6px;
+}
+
+.ls-lg {
+    letter-spacing: 12px;
+}
+
+.text-shadow {
+    text-shadow: 2px 2px 10px rgba($black, 65%);
+}

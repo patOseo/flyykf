@@ -1,0 +1,16 @@
+{
+    "name": "acf/page-hero",
+    "title": "Page Hero",
+    "description": "A custom block to display a regular page hero header.",
+    "category": "ykf-blocks",
+    "icon": "slides",
+    "keywords": ["header", "hero"],
+    "align": "full",
+    "supports": {
+        "align": false
+    },
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "block-page-hero.php"
+    }
+}

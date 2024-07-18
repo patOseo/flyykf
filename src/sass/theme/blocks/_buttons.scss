@@ -1,0 +1,12 @@
+.wp-block-buttons {
+    text-shadow: none;
+
+    .wp-block-button__link {
+        transition: background-color .3s;
+        &.has-amber-background-color {
+            &:hover {
+                background-color: shade-color($amber, 10%) !important;
+            }
+        }
+    }
+}

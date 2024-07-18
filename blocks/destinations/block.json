@@ -1,0 +1,16 @@
+{
+    "name": "acf/destinations",
+    "title": "Destinations",
+    "description": "A custom block to display a list of destinations with a map.",
+    "category": "ykf-blocks",
+    "icon": "location-alt",
+    "keywords": ["map", "locations", "destinations", "flights"],
+    "align": "full",
+    "supports": {
+        "align": false
+    },
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "block-destinations.php"
+    }
+}

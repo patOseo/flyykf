@@ -1,0 +1,14 @@
+.accordion-block {
+    .accordion-icon {
+        transform: rotate(180deg);
+        transition: transform .3s;
+    }
+
+    button {
+        &.collapsed {
+            .accordion-icon {
+                transform: rotate(0deg);
+            }
+        }
+    }
+}

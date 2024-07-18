@@ -1,0 +1,14 @@
+.site-footer {
+    a {
+        color: $white !important;
+        font-weight: bold;
+
+        &:hover {
+            text-decoration: underline !important;
+        }
+    }
+}
+
+.copyright {
+    background-color: shade-color($darkblue, 20%);
+}

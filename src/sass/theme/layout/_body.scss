@@ -1,0 +1,7 @@
+// Fix WordPress 6.6 link underline issue
+:root :where(a:where(:not(.wp-block-navigation))),:root :where(a:where(:not(.wp-element-button))) {text-decoration: initial !important;}
+
+body {
+    overflow: initial !important;
+    padding-right: initial !important;
+}

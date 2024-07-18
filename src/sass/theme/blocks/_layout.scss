@@ -1,0 +1,19 @@
+.block-layout {
+    &.layout-background {
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: top;
+
+        .block-hero {
+            .hero-heading,
+            .hero-subheading {
+                color: $white;
+                text-shadow: 2px 2px 10px rgba($black, 65%);
+            }
+        }
+    }
+
+    &.layout-boxed {
+        padding-bottom: 16rem;
+    }
+}
