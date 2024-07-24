@@ -12625,6 +12625,10 @@ body {
   transform: scale(1.05);
 }
 
+.gm-style-iw-c button {
+  display: none !important;
+}
+
 .wp-block-cover .wp-block-cover__image-background {
   background-size: cover !important;
 }

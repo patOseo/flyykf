@@ -1,5 +1,12 @@
 // Add your custom JS here.
 
+import Tooltip from 'bootstrap/js/dist/tooltip';
+
+var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+  return new Tooltip(tooltipTriggerEl)
+});
+
 // When scrolling past 20px, add class .bg-darkblue to #main-nav
 window.addEventListener('scroll', function() {
     if (window.pageYOffset > 20) {

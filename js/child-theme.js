@@ -5056,7 +5056,7 @@
 
 	var tab = tab$1.exports;
 
-	var tooltip$1 = {exports: {}};
+	var tooltip = {exports: {}};
 
 	var sanitizer = {exports: {}};
 
@@ -5881,9 +5881,9 @@
 		  index.defineJQueryPlugin(Tooltip);
 		  return Tooltip;
 		});
-	} (tooltip$1));
+	} (tooltip));
 
-	var tooltip = /*@__PURE__*/getDefaultExportFromCjs(tooltip$1.exports);
+	var Tooltip = /*@__PURE__*/getDefaultExportFromCjs(tooltip.exports);
 
 	/**
 	 * File skip-link-focus-fix.js.
@@ -5915,6 +5915,10 @@
 	})();
 
 	// Add your custom JS here.
+	var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+	tooltipTriggerList.map(function (tooltipTriggerEl) {
+	  return new Tooltip(tooltipTriggerEl);
+	});
 
 	// When scrolling past 20px, add class .bg-darkblue to #main-nav
 	window.addEventListener('scroll', function () {
@@ -5948,7 +5952,7 @@
 	exports.Offcanvas = offcanvas;
 	exports.Scrollspy = scrollspy;
 	exports.Tab = tab;
-	exports.Tooltip = tooltip;
+	exports.Tooltip = Tooltip;
 
 }));
 //# sourceMappingURL=child-theme.js.map

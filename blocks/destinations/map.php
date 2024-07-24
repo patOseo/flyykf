@@ -87,6 +87,7 @@ function initMarker( $marker, map ) {
     var lat = $marker.data('lat');
     var lng = $marker.data('lng');
     var type = $marker.data('type');
+    var city = $marker.data('city');
     var icon;
     if (type === 'destination') {
         icon = {
@@ -113,6 +114,24 @@ function initMarker( $marker, map ) {
 
     // Append to reference for later use.
     map.markers.push( marker );
+
+    // Create an InfoWindow with the tooltip content.
+    var tooltipContent = city; // Assume data-tooltip contains the tooltip text
+    if (tooltipContent) {
+        var infowindow = new google.maps.InfoWindow({
+            content: tooltipContent
+        });
+
+        // Open the InfoWindow when the marker is clicked.
+        marker.addListener('mouseover', function() {
+            infowindow.open(map, marker);
+        });
+
+        // Open the InfoWindow when the marker is clicked.
+        marker.addListener('mouseout', function() {
+            infowindow.close(map, marker);
+        });
+    }
 
     // If marker contains HTML, add it to an infoWindow.
     if( $marker.html() ){
