@@ -67,13 +67,15 @@ if ( ! empty( $block['className'] ) ) {
                                     <p><?php echo $dest['description']; ?></p>
                                 </div>
                                 <?php if($dest['airlines']): ?>
-                                    <div class="row mt-auto py-4 justify-content-center align-items-center">
+                                    <div class="row mt-auto mx-2 py-4 justify-content-center align-items-center">
                                         <?php foreach($dest['airlines'] as $airline):
                                             $airline_id = $airline['airline'];
                                             $airline_link = $airline['booking_link'];    
                                         ?>
                                             <div class="col-4">
-                                                <a <?php if(count($dest['airlines']) == 1) { echo 'class="stretched-link" ';  } ?>href="<?php echo esc_url($airline_link); ?>" target="_blank" rel="noopener noreferrer"><?php echo wp_get_attachment_image(get_field('logo', 'airline_' . $airline_id)['id'], 'medium'); ?></a>
+                                                <?php if($airline_link): ?><a <?php if(count($dest['airlines']) == 1) { echo 'class="stretched-link" ';  } ?>href="<?php echo esc_url($airline_link); ?>" target="_blank" rel="noopener noreferrer"><?php endif; ?>
+                                                    <?php echo wp_get_attachment_image(get_field('logo', 'airline_' . $airline_id)['id'], 'medium'); ?>
+                                                <?php if($airline_link): ?></a><?php endif; ?>
                                             </div>
                                         <?php endforeach; ?>
                                     </div>
