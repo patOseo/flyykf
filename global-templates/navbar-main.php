@@ -39,7 +39,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 				</div>
 				<div class="col d-flex flex-column d-none d-lg-block">
 					<div class="text-center quicknav-icon position-relative">
-						<img class="mb-2" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/icons/car.svg" alt="Parking" width="auto" height="auto">
+						<img class="mb-2" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/icons/p.svg" alt="Parking" width="auto" height="auto">
 						<a href="/parking/" class="d-block text-light mt-auto mb-0 fs-xs ls-1 fw-bold text-uppercase stretched-link">Parking</a>
 					</div>
 				</div>
@@ -51,8 +51,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 				</div>
 				<div class="col d-flex flex-column d-none d-lg-block">
 					<div class="text-center quicknav-icon position-relative">
-						<img class="mb-2" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/icons/information.svg" alt="Info" width="auto" height="auto">
-						<a href="/contact-us/" class="d-block text-light mt-auto mb-0 fs-xs ls-1 fw-bold text-uppercase stretched-link">Contact</a>
+						<img class="mb-2" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/icons/car.svg" alt="Transportation" width="auto" height="auto">
+						<a href="/public-transportation/" class="d-block text-light mt-auto mb-0 fs-xs ls-1 fw-bold text-uppercase stretched-link">Transportation</a>
 					</div>
 				</div>
 				<div class="col d-flex flex-column">
