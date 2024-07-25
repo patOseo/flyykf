@@ -52,7 +52,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 				<div class="col d-flex flex-column d-none d-lg-block">
 					<div class="text-center quicknav-icon position-relative">
 						<img class="mb-2" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/icons/bus.svg" alt="Transportation" width="auto" height="auto">
-						<a href="/public-transportation/" class="d-block text-light mt-auto mb-0 fs-xs ls-1 fw-bold text-uppercase stretched-link">Transit</a>
+						<a href="/ground-transportation/" class="d-block text-light mt-auto mb-0 fs-xs ls-1 fw-bold text-uppercase stretched-link">Transit</a>
 					</div>
 				</div>
 				<div class="col d-flex flex-column">
