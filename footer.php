@@ -28,7 +28,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 				</div><!-- col -->
 
 				<div class="col-8 col-md mb-5 mb-md-0 px-4 px-md-6">
-					<p class="mb-4"><span class="d-block mb-2">Fly YKF is a division of:</span><strong class="d-block mb-2">Region of Waterloo International Airport (YKF)</strong>
+					<p class="mb-4"><small class="d-block mb-2">Fly YKF is a division of:</small><strong class="d-block mb-2">Region of Waterloo International Airport (YKF)</strong>
 					1-4881 Fountain Street North<br>Breslau, Ontario<br>N0B 1M0
 					</p>
 
@@ -53,8 +53,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 	<div class="copyright py-4">
 		<div class="container">
-			<div class="site-info text-center">
-				© <?php echo date( 'Y' ); ?> Region of Waterloo International Airport. All Rights Reserved.
+			<div class="site-info text-center fs-sm">
+				© <?php echo date( 'Y' ); ?> Region of Waterloo International Airport. All Rights Reserved.  |  Website by <a href="https://foundery.ca/" target="_blank" rel="noopener noreferrer">Foundery</a>
 			</div><!-- .site-info -->
 		</div>
 	</div>
