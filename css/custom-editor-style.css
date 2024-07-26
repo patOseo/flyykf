@@ -12477,9 +12477,6 @@ body {
   background: transparent;
   transition: 0.3s;
 }
-#main-nav .main-logo {
-  top: -8px;
-}
 
 .quicknav img {
   max-height: 40px;
