@@ -21,7 +21,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 	<div class="container-xl">
 
-		<a class="flex-grow-1" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img class="position-relative main-logo" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/logo/ykflogo.svg" width="200" alt="Region of Waterloo International Airport Logo"></a>
+		<a class="flex-grow-1" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img class="position-relative main-logo" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/logo/logo.svg" width="200" alt="Region of Waterloo International Airport Logo"></a>
 
 		<div class="quicknav text-light">
 			<div class="row gx-6">
@@ -84,7 +84,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 			</button>
 			</div><!-- .offcancas-header -->
 
-			<div class="text-center mb-5"><a class="flex-grow-1" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/logo/ykflogo-dark.svg" width="260" alt="Region of Waterloo International Airport Logo"></a></div>
+			<div class="text-center mb-5"><a class="flex-grow-1" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/logo/logo-dark.svg" width="260" alt="Region of Waterloo International Airport Logo"></a></div>
 			
 			<div class="px-3">
 				<hr class="mb-5">
@@ -105,6 +105,13 @@ $container = get_theme_mod( 'understrap_container_type' );
 				)
 			);
 			?>
+			<?php if(get_field('social_links', 'option')): ?>
+				<div class="social-links pb-5">
+					<?php while(have_rows('social_links', 'option')): the_row(); ?>
+						<div class="position-relative social-link d-inline-block rounded-circle me-2 lh-1 text-center"><a class="stretched-link" target="_blank" rel="noopener,noreferrer,nofollow" href="<?php echo esc_url(get_sub_field('link')); ?>"><?php echo get_sub_field('icon'); ?></a></div>
+					<?php endwhile; ?>
+				</div>
+			<?php endif; ?>
 		</div><!-- .offcanvas -->
 
 	</div><!-- .container(-fluid) -->

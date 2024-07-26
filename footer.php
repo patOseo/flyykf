@@ -28,9 +28,17 @@ $container = get_theme_mod( 'understrap_container_type' );
 				</div><!-- col -->
 
 				<div class="col-8 col-md mb-5 mb-md-0 px-4 px-md-6">
-					<p class="mb-0"><strong class="d-block mb-3">Region of Waterloo International Airport (YKF)</strong>
+					<p class="mb-4"><strong class="d-block mb-3">Region of Waterloo International Airport (YKF)</strong>
 					1-4881 Fountain Street North<br>Breslau, Ontario<br>N0B 1M0
 					</p>
+
+					<?php if(get_field('social_links', 'option')): ?>
+						<div class="social-links">
+							<?php while(have_rows('social_links', 'option')): the_row(); ?>
+								<div class="position-relative social-link d-inline-block rounded-circle me-2 lh-1 text-center"><a class="stretched-link" target="_blank" rel="noopener,noreferrer,nofollow" href="<?php echo esc_url(get_sub_field('link')); ?>"><?php echo get_sub_field('icon'); ?></a></div>
+							<?php endwhile; ?>
+						</div>
+					<?php endif; ?>
 				</div>
 
 				<div class="col-12 col-md px-4 px-md-6">
@@ -61,4 +69,3 @@ $container = get_theme_mod( 'understrap_container_type' );
 </body>
 
 </html>
-

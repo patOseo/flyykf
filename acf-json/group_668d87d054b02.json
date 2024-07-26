@@ -46,6 +46,69 @@
             "preview_size": "medium"
         },
         {
+            "key": "field_66a2af8c40f28",
+            "label": "Social Links",
+            "name": "social_links",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Add Icon",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_66a2b00740f2a",
+                    "label": "Icon SVG Code",
+                    "name": "icon",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "Copy the code for an SVG icon from <a href=\"https:\/\/fontawesome.com\/icons\" target=\"_blank\" rel=\"noopener\">FontAwesome<\/a>.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "rows": 1,
+                    "placeholder": "",
+                    "new_lines": "",
+                    "parent_repeater": "field_66a2af8c40f28"
+                },
+                {
+                    "key": "field_66a2afff40f29",
+                    "label": "Link",
+                    "name": "link",
+                    "aria-label": "",
+                    "type": "url",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "parent_repeater": "field_66a2af8c40f28"
+                }
+            ]
+        },
+        {
             "key": "field_668eeb864de96",
             "label": "Google Maps",
             "name": "",
@@ -121,5 +184,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1720731887
+    "modified": 1721938210
 }

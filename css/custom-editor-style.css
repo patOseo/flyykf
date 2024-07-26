@@ -12689,6 +12689,27 @@ body {
   height: 100%;
 }
 
+.social-links .social-link {
+  width: 48px;
+  height: 48px;
+  background-color: #0365ab;
+  transition: background-color 0.3s;
+}
+.social-links .social-link:hover {
+  background-color: #19BEE6;
+}
+.social-links .social-link svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 24px;
+  max-height: 24px;
+}
+.social-links .social-link path {
+  fill: #fff;
+}
+
 .components-circular-option-picker__option {
   border-radius: 50%;
 }
