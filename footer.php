@@ -28,7 +28,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 				</div><!-- col -->
 
 				<div class="col-8 col-md mb-5 mb-md-0 px-4 px-md-6">
-					<p class="mb-4"><strong class="d-block mb-3">Region of Waterloo International Airport (YKF)</strong>
+					<p class="mb-4"><span class="d-block mb-2">Fly YKF is a division of:</span><strong class="d-block mb-2">Region of Waterloo International Airport (YKF)</strong>
 					1-4881 Fountain Street North<br>Breslau, Ontario<br>N0B 1M0
 					</p>
 
