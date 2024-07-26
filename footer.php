@@ -23,11 +23,11 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 			<div class="row">
 
-				<div class="col-4 col-md-2 mb-5 mb-md-0 px-4 pe-md-6 border-end border-darkerblue">
-					<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/ykf-logo-vert.png" alt="Waterloo International Airport">
+				<div class="col-4 col-xl-2 mb-5 mb-xl-0 px-4 pe-md-6 border-end border-darkerblue">
+					<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/logo/logo-vert.svg" alt="Waterloo International Airport">
 				</div><!-- col -->
 
-				<div class="col-8 col-md mb-5 mb-md-0 px-4 px-md-6">
+				<div class="col-8 col-md-4 col-xl mb-5 mb-md-0 px-4 px-xl-6">
 					<p class="mb-4"><small class="d-block mb-2">Fly YKF is a division of:</small><strong class="d-block mb-2">Region of Waterloo International Airport (YKF)</strong>
 					1-4881 Fountain Street North<br>Breslau, Ontario<br>N0B 1M0
 					</p>
@@ -41,7 +41,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 					<?php endif; ?>
 				</div>
 
-				<div class="col-12 col-md px-4 px-md-6">
+				<div class="col-12 col-md-4 col-xl px-4 px-xl-6">
 					<p class="lh-lg mb-0">Telephone: <a href="tel:519-575-4781">519-575-4781</a><br>Toll-free: <a href="tel:1-866-648-2256">1-866-648-2256</a><br>Deaf or Hard of Hearing (TTY): <a href="tel:519-575-4608">519-575-4608</a><br>Fax: <strong>519-648-3540</strong></p>
 				</div>
 
