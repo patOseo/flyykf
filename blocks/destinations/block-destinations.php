@@ -11,12 +11,22 @@ if ( ! empty( $block['className'] ) ) {
    $class_name .= ' ' . $block['className'];
 }
 
+$args = array(
+    'post_type' => 'destination',
+    'post_status' => 'publish',
+    'posts_per_page' => -1,
+    'fields' => 'ids'
+);
+
+$all_dests = new WP_Query($args);
+
 ?>
 
 <?php if(have_rows('destination_sections')): 
     
     // Setting up an array with all the destinations for the map
     $map_dests = array();
+    $map_nondests = array();
     while(have_rows('destination_sections')): the_row();
         $destinations = get_sub_field('destinations');
         foreach($destinations as $destination): 
