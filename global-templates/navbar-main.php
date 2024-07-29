@@ -106,7 +106,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 			);
 			?>
 			<?php if(get_field('social_links', 'option')): ?>
-				<div class="social-links pb-3 pb-xl-5">
+				<div class="social-links py-4 pb-xl-5">
 					<?php while(have_rows('social_links', 'option')): the_row(); ?>
 						<div class="position-relative social-link d-inline-block rounded-circle me-2 lh-1 text-center"><a class="stretched-link" target="_blank" rel="noopener,noreferrer,nofollow" href="<?php echo esc_url(get_sub_field('link')); ?>"><?php echo get_sub_field('icon'); ?></a></div>
 					<?php endwhile; ?>
