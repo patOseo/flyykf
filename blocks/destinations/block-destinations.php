@@ -99,7 +99,7 @@ endif; ?>
                 <div class="marker" data-enabled="<?php echo $map_dest['enabled']; ?>" data-lat="<?php echo $map_dest['lat']; ?>" data-lng="<?php echo $map_dest['lng']; ?>" data-type="destination" data-city="<?php echo $map_dest['city']; ?>" data-airport-code="<?php echo $map_dest['airport_code']; ?>"></div>
             <?php endforeach; ?>
 
-            <?php if(isset($non_map_dests)): foreach($non_map_dests as $non_map_dest): // We add a marker for each disabled destination ?>
+            <?php if(isset($non_map_dests) && get_field('show_greyed_out_destinations') != 0): foreach($non_map_dests as $non_map_dest): // We add a marker for each disabled destination ?>
                 <div class="marker" data-enabled="<?php echo $non_map_dest['enabled']; ?>" data-lat="<?php echo $non_map_dest['lat']; ?>" data-lng="<?php echo $non_map_dest['lng']; ?>" data-type="destination" data-city="<?php echo $non_map_dest['city']; ?>" data-airport-code="<?php echo $non_map_dest['airport_code']; ?>"></div>
             <?php endforeach; endif; ?>
         </div>

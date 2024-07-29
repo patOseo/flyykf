@@ -111,6 +111,34 @@
             ]
         },
         {
+            "key": "field_66a7bf83bf4f1",
+            "label": "Show Greyed Out Destinations",
+            "name": "show_greyed_out_destinations",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "The destinations that have not been selected will be shown on the map, but greyed out.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_66a7b2bc47fa7",
+                        "operator": "==",
+                        "value": "manual"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "ui": 1
+        },
+        {
             "key": "field_66a7ba3b08f8d",
             "label": "Show Destination Cards",
             "name": "show_dest_cards",
@@ -157,5 +185,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1722268255
+    "modified": 1722269710
 }
