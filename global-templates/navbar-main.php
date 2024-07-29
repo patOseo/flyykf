@@ -28,7 +28,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 				<div class="col d-flex flex-column d-none d-lg-block">
 					<div class="text-center quicknav-icon position-relative">
 						<img class="mb-2" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/icons/plane.svg" alt="Flights" width="auto" height="auto">
-						<a href="#" class="d-block text-light mt-auto mb-0 fs-xs ls-1 fw-bold text-uppercase stretched-link">Flights</a>
+						<a href="/#flights" class="d-block text-light mt-auto mb-0 fs-xs ls-1 fw-bold text-uppercase stretched-link">Flights</a>
 						<div class="quicknav-dropdown bg-darkblue p-4 text-start text-white position-absolute w-auto">
 							<ul class="list-group">
 								<li class="menu-item nav-item"><a href="/fly-south/" class="mb-0 fs-xs ls-1 fw-bold text-uppercase text-white">Fly South</a></li>
@@ -84,7 +84,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 			</button>
 			</div><!-- .offcancas-header -->
 
-			<div class="text-center mb-5"><a class="flex-grow-1" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/logo/logo-dark.svg" width="260" alt="Region of Waterloo International Airport Logo"></a></div>
+			<div class="text-center"><a class="flex-grow-1" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/logo/logo-dark.svg" width="260" alt="Region of Waterloo International Airport Logo"></a></div>
 			
 			<div class="px-3">
 				<hr class="mb-5">
@@ -106,7 +106,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 			);
 			?>
 			<?php if(get_field('social_links', 'option')): ?>
-				<div class="social-links pb-5">
+				<div class="social-links pb-3 pb-xl-5">
 					<?php while(have_rows('social_links', 'option')): the_row(); ?>
 						<div class="position-relative social-link d-inline-block rounded-circle me-2 lh-1 text-center"><a class="stretched-link" target="_blank" rel="noopener,noreferrer,nofollow" href="<?php echo esc_url(get_sub_field('link')); ?>"><?php echo get_sub_field('icon'); ?></a></div>
 					<?php endwhile; ?>

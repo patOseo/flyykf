@@ -34,27 +34,44 @@ function initMap( $el ) {
     map.markers = [];
     var originMarker = null; // Marker without data-type="destination"
     var destinationMarkers = []; // Markers with data-type="destination"
+    var destinationMarkersDisabled = []; // Markers with data-type="destination" and data-enabled="0"
 
     $markers.each(function(){
         var $this = $(this);
         var type = $this.data('type');
+        var enabled = $this.data('enabled');
 
         var marker = initMarker( $(this), map );
 
-        if (type === 'destination') {
+        if (type === 'destination' && enabled == 1) {
             destinationMarkers.push(marker);
-        } else { 
+        } else if(type === 'origin') { 
             originMarker = marker;
+        } else {
+            destinationMarkersDisabled.push(marker);
         }
     });
 
     if (originMarker) {
         destinationMarkers.forEach(function(destinationMarker) {
+            var color = '#19BEE6';
             var line = new google.maps.Polyline({
                 path: [originMarker.getPosition(), destinationMarker.getPosition()],
                 geodesic: true,
-                strokeColor: '#19BEE6',
-                strokeOpacity: .65,
+                strokeColor: color,
+                strokeOpacity: .5,
+                strokeWeight: 2,
+                map: map
+            });
+        });
+
+        destinationMarkersDisabled.forEach(function(destinationMarker) {
+            var color = '#BBBBBB';
+            var line = new google.maps.Polyline({
+                path: [originMarker.getPosition(), destinationMarker.getPosition()],
+                geodesic: true,
+                strokeColor: color,
+                strokeOpacity: .3,
                 strokeWeight: 2,
                 map: map
             });
@@ -88,12 +105,20 @@ function initMarker( $marker, map ) {
     var lng = $marker.data('lng');
     var type = $marker.data('type');
     var city = $marker.data('city');
+    var enabled = $marker.data('enabled');
     var icon;
     if (type === 'destination') {
-        icon = {
-            url: '<?php echo get_stylesheet_directory_uri() . '/assets/icons/arrival.svg'; ?>',
-            anchor: new google.maps.Point(16, 16) // Adjust based on the icon's dimensions
-        };
+        if(enabled == 0) {
+            icon = {
+                url: '<?php echo get_stylesheet_directory_uri() . '/assets/icons/arrival-disabled.svg'; ?>',
+                anchor: new google.maps.Point(16, 16) // Adjust based on the icon's dimensions
+            };
+        } else {
+            icon = {
+                url: '<?php echo get_stylesheet_directory_uri() . '/assets/icons/arrival.svg'; ?>',
+                anchor: new google.maps.Point(16, 16) // Adjust based on the icon's dimensions
+            };
+        }
     } else {
         icon = {
             url: '<?php echo get_stylesheet_directory_uri() . '/assets/icons/ykf-marker.svg'; ?>',
@@ -122,12 +147,12 @@ function initMarker( $marker, map ) {
             content: tooltipContent
         });
 
-        // Open the InfoWindow when the marker is clicked.
+        // Open the InfoWindow on hover.
         marker.addListener('mouseover', function() {
             infowindow.open(map, marker);
         });
 
-        // Open the InfoWindow when the marker is clicked.
+        // Hide the InfoWindow on hover out.
         marker.addListener('mouseout', function() {
             infowindow.close(map, marker);
         });
@@ -148,7 +173,11 @@ function initMarker( $marker, map ) {
         var destId = 'dest_' + $marker.data('airport-code');
         var dests = $('.destination-card');
         var dest = $('#' + destId);
-        if (dest.length) {
+        if (destId.length > 0) {
+            if(dests.length < 1) {
+                
+                window.location.href = '/fly-south/';
+            }
             $('html, body').animate({
                 scrollTop: dest.offset().top - 200
             }, 0);

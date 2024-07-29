@@ -3,6 +3,29 @@
     "title": "Block – Destinations",
     "fields": [
         {
+            "key": "field_66a7b2bc47fa7",
+            "label": "Show Destinations",
+            "name": "show_dests",
+            "aria-label": "",
+            "type": "button_group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "manual": "Select Manually",
+                "all": "Show All"
+            },
+            "default_value": "manual",
+            "return_format": "value",
+            "allow_null": 0,
+            "layout": "horizontal"
+        },
+        {
             "key": "field_668ef4483ccfd",
             "label": "Destination Sections",
             "name": "destination_sections",
@@ -10,7 +33,15 @@
             "type": "repeater",
             "instructions": "",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_66a7b2bc47fa7",
+                        "operator": "==",
+                        "value": "manual"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -78,6 +109,34 @@
                     "parent_repeater": "field_668ef4483ccfd"
                 }
             ]
+        },
+        {
+            "key": "field_66a7ba3b08f8d",
+            "label": "Show Destination Cards",
+            "name": "show_dest_cards",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_66a7b2bc47fa7",
+                        "operator": "==",
+                        "value": "all"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "ui": 1
         }
     ],
     "location": [
@@ -98,5 +157,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1720645078
+    "modified": 1722268255
 }

@@ -11,22 +11,28 @@ if ( ! empty( $block['className'] ) ) {
    $class_name .= ' ' . $block['className'];
 }
 
+$show_dests = get_field('show_dests');
+
 $args = array(
     'post_type' => 'destination',
     'post_status' => 'publish',
     'posts_per_page' => -1,
-    'fields' => 'ids'
+    'fields' => 'ids',
+    'orderby' => 'title',
+    'order' => 'ASC'
 );
 
 $all_dests = new WP_Query($args);
 
+$all_dests_ids = $all_dests->posts;
+
 ?>
 
-<?php if(have_rows('destination_sections')): 
+<?php if($show_dests != 'all' && have_rows('destination_sections')): 
     
     // Setting up an array with all the destinations for the map
     $map_dests = array();
-    $map_nondests = array();
+    $map_dests_ids = array();
     while(have_rows('destination_sections')): the_row();
         $destinations = get_sub_field('destinations');
         foreach($destinations as $destination): 
@@ -36,22 +42,66 @@ $all_dests = new WP_Query($args);
                 'city' => $dest['city'],
                 'lat' => $address['lat'],
                 'lng' => $address['lng'],
-                'airport_code' => $dest['airport_code']
+                'airport_code' => $dest['airport_code'],
+                'enabled' => '1',
+                'dest_id' => $destination
             );
+            $map_dests_ids[] = $destination;
         endforeach;
     endwhile;
+
+    // If we have destinations, we need to get the ones that are not in the map
+    foreach($all_dests_ids as $all_dest_id) {
+        if(!in_array($all_dest_id, $map_dests_ids)) {
+            $dest = get_field('destination', $all_dest_id);
+            $address = get_field('address', $all_dest_id);
+            $non_map_dests[] = array(
+                'city' => $dest['city'],
+                'lat' => $address['lat'],
+                'lng' => $address['lng'],
+                'airport_code' => $dest['airport_code'],
+                'enabled' => '0',
+                'dest_id' => $all_dest_id
+            );
+        }
+    }
 ?>
 
+<?php elseif($show_dests == 'all'):
+
+    $map_dests = array();
+
+    foreach($all_dests_ids as $dest_id) {
+        $dest = get_field('destination', $dest_id);
+        $address = get_field('address', $dest_id);
+        $map_dests[] = array(
+            'city' => $dest['city'],
+            'lat' => $address['lat'],
+            'lng' => $address['lng'],
+            'airport_code' => $dest['airport_code'],
+            'enabled' => '1',
+            'dest_id' => $dest_id
+        );
+    }
+
+endif; ?>
+
+
+<?php if(isset($map_dests) && $map_dests): ?>
 <div class="<?php echo esc_attr($class_name); ?>">
-    <?php if($map_dests): // If we have destinations, render the map ?>
+    <?php if($map_dests):  // If we have destinations, render the map ?>
     <div class="destinations-map shadow mt-n4 mx-n2 mt-lg-n5 mx-lg-n4 mb-5">
         <div class="ykf-map rounded-2" id="ykf-map" data-zoom="16">
             <?php $ykf = get_field('ykf_airport_address', 'option'); // This is the marker for the YKF Airport. We grab latlng values from the Options field. ?>
                 <div class="marker" data-lat="<?= $ykf['lat']; ?>" data-lng="<?= $ykf['lng']; ?>" data-city="Waterloo, ON" data-airport-code="YKF" data-type="origin"></div>
 
             <?php foreach($map_dests as $map_dest): // We add a marker for each destination ?>
-                <div class="marker" data-lat="<?php echo $map_dest['lat']; ?>" data-lng="<?php echo $map_dest['lng']; ?>" data-type="destination" data-city="<?php echo $map_dest['city']; ?>" data-airport-code="<?php echo $map_dest['airport_code']; ?>"></div>
+                <div class="marker" data-enabled="<?php echo $map_dest['enabled']; ?>" data-lat="<?php echo $map_dest['lat']; ?>" data-lng="<?php echo $map_dest['lng']; ?>" data-type="destination" data-city="<?php echo $map_dest['city']; ?>" data-airport-code="<?php echo $map_dest['airport_code']; ?>"></div>
             <?php endforeach; ?>
+
+            <?php if(isset($non_map_dests)): foreach($non_map_dests as $non_map_dest): // We add a marker for each disabled destination ?>
+                <div class="marker" data-enabled="<?php echo $non_map_dest['enabled']; ?>" data-lat="<?php echo $non_map_dest['lat']; ?>" data-lng="<?php echo $non_map_dest['lng']; ?>" data-type="destination" data-city="<?php echo $non_map_dest['city']; ?>" data-airport-code="<?php echo $non_map_dest['airport_code']; ?>"></div>
+            <?php endforeach; endif; ?>
         </div>
     </div>
     <?php endif; ?>
@@ -63,40 +113,23 @@ $all_dests = new WP_Query($args);
             <div class="text-center">
                 <h2 class="h3 mb-4"><?php echo get_sub_field('heading'); ?></h2>
                 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 justify-content-center">
-                    <?php foreach($destinations as $destination): $dest = get_field('destination', $destination); // Loop through each destination and render as a col + destination card ?>
-                        <div class="col my-4">
-                            <div id="dest_<?php echo esc_attr($dest['airport_code']); ?>" class="destination-card position-relative d-flex flex-column h-100 border border-light shadow-sm rounded-3">
-                                <div class="position-relative mb-5">
-                                    <div class="destination-image overflow-hidden"><?php echo wp_get_attachment_image($dest['image'], 'large', '', array('class' => 'ratio ratio-16x9')) ?></div>
-                                    <div class="airport-code position-absolute start-50 top-100 translate-middle bg-primary shadow-sm text-center px-4 py-2">
-                                        <p class="text-white text-uppercase fs-6 fw-bold mb-0"><?php echo $dest['airport_code']; ?></p>
-                                    </div>
-                                </div>
-                                <div class="p-3">
-                                    <h3 class="h4 text-darkblue"><?php echo $dest['city']; ?></h3>
-                                    <p><?php echo $dest['description']; ?></p>
-                                </div>
-                                <?php if($dest['airlines']): ?>
-                                    <div class="row mt-auto mx-2 py-4 justify-content-center align-items-center">
-                                        <?php foreach($dest['airlines'] as $airline):
-                                            $airline_id = $airline['airline'];
-                                            $airline_link = $airline['booking_link'];    
-                                        ?>
-                                            <div class="col-4">
-                                                <?php if($airline_link): ?><a <?php if(count($dest['airlines']) == 1) { echo 'class="stretched-link" ';  } ?>href="<?php echo esc_url($airline_link); ?>" target="_blank" rel="noopener noreferrer"><?php endif; ?>
-                                                    <?php echo wp_get_attachment_image(get_field('logo', 'airline_' . $airline_id)['id'], 'medium'); ?>
-                                                <?php if($airline_link): ?></a><?php endif; ?>
-                                            </div>
-                                        <?php endforeach; ?>
-                                    </div>
-                                <?php endif; ?>
-                            </div>
-                        </div>
+                    <?php foreach($destinations as $destination): ?>
+                        <?php get_template_part('blocks/destinations/loop', 'destinations', array('dest' => $destination)); ?>
                     <?php endforeach; ?>
                 </div>
             </div>
         </div>
     <?php endwhile; ?>
+
+    <?php if($show_dests == 'all' && get_field('show_dest_cards')): ?>
+        <div class="destination-section">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 justify-content-center">
+                <?php foreach($all_dests_ids as $dest_id): ?>
+                    <?php get_template_part('blocks/destinations/loop', 'destinations', array('dest' => $dest_id)); ?>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    <?php endif; ?>
 </div>
 
 <?php 
