@@ -71,7 +71,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 			</div>
 		</div>
 
-		<div class="offcanvas offcanvas-end text-center bg-white shadow pt-5" tabindex="-1" id="navbarNavOffcanvas">
+		<div class="offcanvas offcanvas-end text-center bg-white shadow pt-1 pt-lg-5" tabindex="-1" id="navbarNavOffcanvas">
 
 			<div class="offcanvas-header position-absolute justify-content-center text-center">
 				<button
