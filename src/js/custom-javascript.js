@@ -1,6 +1,33 @@
 // Add your custom JS here.
 
 import Tooltip from 'bootstrap/js/dist/tooltip';
+import Swiper from 'swiper';
+import { Navigation, Pagination } from 'swiper/modules';
+
+// on page load, initialize Swiper if present on page
+document.addEventListener('DOMContentLoaded', function() {
+    var mySwiper = document.getElementById('swiper');
+    if(mySwiper) {
+        const swiper = new Swiper('.swiper', {
+            modules: [Pagination, Navigation],
+            slidesPerView: 1,
+            spaceBetween: 48,
+            loop: true,
+            autoHeight: true,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                dynamicBullets: true,
+                clickable: true,
+            },
+            keyboard: true
+        });
+    }
+});
+
 
 var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
 var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {

@@ -1,0 +1,17 @@
+{
+    "name": "acf/reviews",
+    "title": "Reviews",
+    "description": "A custom block to display reviews in a carousel slider.",
+    "script": [ "file:./block-reivews.js" ],
+    "category": "ykf-blocks",
+    "icon": "admin-comments",
+    "keywords": ["reviews", "testimonials"],
+    "align": "full",
+    "supports": {
+        "align": false
+    },
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "block-reviews.php"
+    }
+}

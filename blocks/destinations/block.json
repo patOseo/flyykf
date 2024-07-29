@@ -10,7 +10,7 @@
         "align": false
     },
     "acf": {
-        "mode": "preview",
+        "mode": "edit",
         "renderTemplate": "block-destinations.php"
     }
 }
