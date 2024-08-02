@@ -1,0 +1,16 @@
+{
+    "name": "acf/hero-slider",
+    "title": "Hero Slider",
+    "description": "A custom block to display a hero slider.",
+    "category": "ykf-blocks",
+    "icon": "slides",
+    "keywords": ["slider", "hero", "header"],
+    "align": "full",
+    "supports": {
+        "align": false
+    },
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "block-hero-slider.php"
+    }
+}

@@ -2,13 +2,13 @@
 
 import Tooltip from 'bootstrap/js/dist/tooltip';
 import Swiper from 'swiper';
-import { Navigation, Pagination } from 'swiper/modules';
+import { Navigation, Pagination, Autoplay, EffectFade } from 'swiper/modules';
 
-// on page load, initialize Swiper if present on page
+// on page load, initialize testimonial Swiper if present on page
 document.addEventListener('DOMContentLoaded', function() {
-    var mySwiper = document.getElementById('swiper');
-    if(mySwiper) {
-        const swiper = new Swiper('.swiper', {
+    var reviewsSwiper = document.getElementById('reviewsSlider');
+    if(reviewsSwiper) {
+        const swiper = new Swiper(reviewsSwiper, {
             modules: [Pagination, Navigation],
             slidesPerView: 1,
             spaceBetween: 48,
@@ -19,11 +19,41 @@ document.addEventListener('DOMContentLoaded', function() {
                 prevEl: '.swiper-button-prev',
             },
             pagination: {
-                el: '.swiper-pagination',
+                el: '.reviews-pagination',
                 dynamicBullets: true,
                 clickable: true,
             },
             keyboard: true
+        });
+    }
+
+    var heroSlider = document.getElementById('heroSlider');
+    if(heroSlider) {
+        var swiper = new Swiper(heroSlider, {
+            modules: [Pagination, Autoplay, EffectFade],
+            spaceBetween: 30,
+            draggable: false,
+            allowTouchMove: false,
+            simulateTouch: false,
+            touchStartPreventDefault: false,
+            noSwiping: true,
+            noSwipingClass: 'no-swiping',
+            loop: true,
+            autoplay: {
+              delay: 5000,
+              disableOnInteraction: false,
+            },
+            slidesPerView: 1,
+            effect: 'fade',
+            fadeEffect: {
+              crossFade: true,
+
+            },
+            speed: 1000,
+            pagination: {
+              el: '.hero-pagination',
+              clickable: true
+            },
         });
     }
 });

@@ -16,7 +16,7 @@ if ( ! empty( $block['className'] ) ) {
 <?php if(have_rows('reviews')): ?>
 
     <div class="<?php echo esc_attr($class_name); ?>">
-        <div class="swiper" id="swiper">
+        <div class="swiper" id="reviewsSlider">
             <div class="swiper-wrapper">
                 <?php while(have_rows('reviews')): the_row(); $rating = get_sub_field('rating'); ?>
                     <div class="swiper-slide">
@@ -39,7 +39,7 @@ if ( ! empty( $block['className'] ) ) {
             <div class="swiper-button-next"></div>
         </div>
         <div class="pt-5">
-            <div class="swiper-pagination"></div>
+            <div class="swiper-pagination reviews-pagination"></div>
         </div>
     </div>
 

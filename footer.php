@@ -35,7 +35,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 					<?php if(get_field('social_links', 'option')): ?>
 						<div class="social-links">
 							<?php while(have_rows('social_links', 'option')): the_row(); ?>
-								<div class="position-relative social-link d-inline-block rounded-circle me-2 lh-1 text-center"><a class="stretched-link" target="_blank" rel="noopener,noreferrer,nofollow" href="<?php echo esc_url(get_sub_field('link')); ?>"><?php echo get_sub_field('icon'); ?></a></div>
+								<div class="position-relative social-link d-inline-block rounded-circle me-2 lh-1 text-center"><a class="stretched-link" target="_blank" rel="noopener,noreferrer,nofollow" href="<?php echo esc_url(get_sub_field('link')); ?>" aria-label="<?php echo 'Fly YKF on ' . esc_html(get_sub_field('name')); ?>"><?php echo get_sub_field('icon'); ?></a></div>
 							<?php endwhile; ?>
 						</div>
 					<?php endif; ?>

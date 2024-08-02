@@ -4,7 +4,7 @@
     "fields": [
         {
             "key": "field_668eebb0cb6c8",
-            "label": "Global Settings",
+            "label": "Theme Styling",
             "name": "",
             "aria-label": "",
             "type": "tab",
@@ -21,12 +21,35 @@
             "selected": 0
         },
         {
+            "key": "field_66acdd196e1bf",
+            "label": "Header Style",
+            "name": "header_style",
+            "aria-label": "",
+            "type": "button_group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "white": "White with black icons",
+                "blue": "Blue with white icons"
+            },
+            "default_value": "",
+            "return_format": "value",
+            "allow_null": 0,
+            "layout": "horizontal"
+        },
+        {
             "key": "field_668d87d0e818d",
             "label": "Default Background Image",
             "name": "default_bg",
             "aria-label": "",
             "type": "image",
-            "instructions": "",
+            "instructions": "Used when no background image is set for the \"hero\" block.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -44,6 +67,24 @@
             "max_size": "",
             "mime_types": "",
             "preview_size": "medium"
+        },
+        {
+            "key": "field_66acdcefd56dc",
+            "label": "Social Links",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "left",
+            "endpoint": 0,
+            "selected": 0
         },
         {
             "key": "field_66a2af8c40f28",
@@ -86,6 +127,27 @@
                     "rows": 1,
                     "placeholder": "",
                     "new_lines": "",
+                    "parent_repeater": "field_66a2af8c40f28"
+                },
+                {
+                    "key": "field_66ace61eb82ca",
+                    "label": "Name",
+                    "name": "name",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
                     "parent_repeater": "field_66a2af8c40f28"
                 },
                 {
@@ -184,5 +246,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1721938210
+    "modified": 1722607151
 }

@@ -20,6 +20,7 @@ function register_acf_blocks() {
 	register_block_type( __DIR__ . '/../blocks/accordion' );
     register_block_type( __DIR__ . '/../blocks/boxed-content' );
 	register_block_type( __DIR__ . '/../blocks/page-hero' );
+	register_block_type( __DIR__ . '/../blocks/hero-slider' );
 	register_block_type( __DIR__ . '/../blocks/destinations' );
 	register_block_type( __DIR__ . '/../blocks/reviews' );
 }
