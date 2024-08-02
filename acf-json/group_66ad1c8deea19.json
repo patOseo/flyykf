@@ -51,6 +51,29 @@
                     "parent_repeater": "field_66ad1c8eee90f"
                 }
             ]
+        },
+        {
+            "key": "field_66ad357a053fc",
+            "label": "Overlay",
+            "name": "overlay",
+            "aria-label": "",
+            "type": "button_group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "blue": "Blue",
+                "dark": "Dark"
+            },
+            "default_value": "blue",
+            "return_format": "value",
+            "allow_null": 0,
+            "layout": "horizontal"
         }
     ],
     "location": [
@@ -71,5 +94,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1722622012
+    "modified": 1722627474
 }

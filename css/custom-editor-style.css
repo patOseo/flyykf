@@ -12937,8 +12937,13 @@ body {
   object-position: center !important;
 }
 .block-img-slider-container .content-container {
-  background: linear-gradient(rgba(3, 106, 180, 0.98) 0%, rgba(3, 106, 180, 0.75) 90%);
   z-index: 1;
+}
+.block-img-slider-container .content-container.blue-overlay {
+  background: linear-gradient(rgba(3, 106, 180, 0.98) 0%, rgba(3, 106, 180, 0.75) 90%);
+}
+.block-img-slider-container .content-container.dark-overlay {
+  background: linear-gradient(rgba(0, 0, 0, 0.68) 0, rgba(0, 0, 0, 0.19) 90%);
 }
 
 .block-boxed-content > .container {

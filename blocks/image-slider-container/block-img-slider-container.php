@@ -11,6 +11,12 @@ if ( ! empty( $block['className'] ) ) {
    $class_name .= ' ' . $block['className'];
 }
 
+$overlay = get_field('overlay');
+
+if(!$overlay) {
+    $overlay = 'blue';
+}
+
 ?>
 
 <div class="<?php echo esc_attr($class_name); ?>">
@@ -27,7 +33,7 @@ if ( ! empty( $block['className'] ) ) {
         </div>
     <?php endif; ?>
 
-    <div class="content-container px-3 position-relative py-12 overflow-hidden">
+    <div class="content-container px-3 position-relative py-12 overflow-hidden <?php echo esc_attr($overlay) . '-overlay'; ?>">
         <InnerBlocks />
     </div>
 </div>

@@ -10,7 +10,13 @@
     }
 
     .content-container {
-        background: linear-gradient(rgba($darkblue, .98) 0%, rgba($darkblue, .75) 90%);
         z-index: 1;
+        &.blue-overlay {
+            background: linear-gradient(rgba($darkblue, .98) 0%, rgba($darkblue, .75) 90%);
+        }
+
+        &.dark-overlay {
+            background: linear-gradient(rgb(0 0 0 / 68%) 0, rgb(0 0 0 / 19%) 90%);
+        }
     }
 }
