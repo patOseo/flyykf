@@ -1,0 +1,22 @@
+{
+    "name": "acf/img-slider-container",
+    "title": "Image Slider Container",
+    "description": "A custom block to display content over an image slider.",
+    "category": "ykf-blocks",
+    "icon": "slides",
+    "keywords": ["slider", "image container", "header"],
+    "align": "full",
+    "supports": {
+        "jsx": true
+    },
+    "attributes": {
+        "align": {
+            "type": "string",
+            "default": "full"
+        }
+    },
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "block-img-slider-container.php"
+    }
+}

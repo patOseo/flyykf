@@ -1,6 +1,6 @@
 import Alert from 'bootstrap/js/dist/alert'
 import Button from 'bootstrap/js/dist/button'
-// import Carousel from 'bootstrap/js/dist/carousel'
+import Carousel from 'bootstrap/js/dist/carousel'
 import Collapse from 'bootstrap/js/dist/collapse'
 import Dropdown from 'bootstrap/js/dist/dropdown'
 import Modal from 'bootstrap/js/dist/modal'
@@ -14,7 +14,7 @@ import Tooltip from 'bootstrap/js/dist/tooltip'
 export {
 	Alert,
 	Button,
-	// Carousel,
+	Carousel,
 	Collapse,
 	Dropdown,
 	Modal,

@@ -56,6 +56,32 @@ document.addEventListener('DOMContentLoaded', function() {
             },
         });
     }
+
+    // var imgSlider = document.getElementById('bgImgSlider');
+    // if(imgSlider) {
+    //     var swiper = new Swiper(imgSlider, {
+    //         modules: [Autoplay, EffectFade],
+    //         spaceBetween: 30,
+    //         draggable: false,
+    //         allowTouchMove: false,
+    //         simulateTouch: false,
+    //         touchStartPreventDefault: false,
+    //         noSwiping: true,
+    //         noSwipingClass: 'no-swiping',
+    //         loop: true,
+    //         autoplay: {
+    //           delay: 4000,
+    //           disableOnInteraction: false,
+    //         },
+    //         slidesPerView: 1,
+    //         effect: 'fade',
+    //         fadeEffect: {
+    //           crossFade: true,
+
+    //         },
+    //         speed: 1000,
+    //     });
+    // }
 });
 
 

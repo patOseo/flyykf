@@ -6,8 +6,11 @@
     "icon": "slides",
     "keywords": ["slider", "hero", "header"],
     "align": "full",
-    "supports": {
-        "align": false
+    "attributes": {
+        "align": {
+            "type": "string",
+            "default": "full"
+        }
     },
     "acf": {
         "mode": "edit",

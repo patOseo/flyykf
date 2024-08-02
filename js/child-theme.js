@@ -1147,7 +1147,7 @@
 
 	var button = button$1.exports;
 
-	var collapse$1 = {exports: {}};
+	var carousel$1 = {exports: {}};
 
 	var selectorEngine = {exports: {}};
 
@@ -1226,6 +1226,537 @@
 	} (selectorEngine));
 		return selectorEngine.exports;
 	}
+
+	var swipe = {exports: {}};
+
+	/*!
+	  * Bootstrap swipe.js v5.2.3 (https://getbootstrap.com/)
+	  * Copyright 2011-2022 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+	  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+	  */
+
+	var hasRequiredSwipe;
+
+	function requireSwipe () {
+		if (hasRequiredSwipe) return swipe.exports;
+		hasRequiredSwipe = 1;
+		(function (module, exports) {
+			(function (global, factory) {
+			  module.exports = factory(requireConfig(), requireEventHandler(), requireUtil()) ;
+			})(commonjsGlobal, function (Config, EventHandler, index) {
+
+			  const _interopDefaultLegacy = e => e && typeof e === 'object' && 'default' in e ? e : {
+			    default: e
+			  };
+			  const Config__default = /*#__PURE__*/_interopDefaultLegacy(Config);
+			  const EventHandler__default = /*#__PURE__*/_interopDefaultLegacy(EventHandler);
+
+			  /**
+			   * --------------------------------------------------------------------------
+			   * Bootstrap (v5.2.3): util/swipe.js
+			   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+			   * --------------------------------------------------------------------------
+			   */
+			  /**
+			   * Constants
+			   */
+
+			  const NAME = 'swipe';
+			  const EVENT_KEY = '.bs.swipe';
+			  const EVENT_TOUCHSTART = `touchstart${EVENT_KEY}`;
+			  const EVENT_TOUCHMOVE = `touchmove${EVENT_KEY}`;
+			  const EVENT_TOUCHEND = `touchend${EVENT_KEY}`;
+			  const EVENT_POINTERDOWN = `pointerdown${EVENT_KEY}`;
+			  const EVENT_POINTERUP = `pointerup${EVENT_KEY}`;
+			  const POINTER_TYPE_TOUCH = 'touch';
+			  const POINTER_TYPE_PEN = 'pen';
+			  const CLASS_NAME_POINTER_EVENT = 'pointer-event';
+			  const SWIPE_THRESHOLD = 40;
+			  const Default = {
+			    endCallback: null,
+			    leftCallback: null,
+			    rightCallback: null
+			  };
+			  const DefaultType = {
+			    endCallback: '(function|null)',
+			    leftCallback: '(function|null)',
+			    rightCallback: '(function|null)'
+			  };
+			  /**
+			   * Class definition
+			   */
+
+			  class Swipe extends Config__default.default {
+			    constructor(element, config) {
+			      super();
+			      this._element = element;
+			      if (!element || !Swipe.isSupported()) {
+			        return;
+			      }
+			      this._config = this._getConfig(config);
+			      this._deltaX = 0;
+			      this._supportPointerEvents = Boolean(window.PointerEvent);
+			      this._initEvents();
+			    } // Getters
+
+			    static get Default() {
+			      return Default;
+			    }
+			    static get DefaultType() {
+			      return DefaultType;
+			    }
+			    static get NAME() {
+			      return NAME;
+			    } // Public
+
+			    dispose() {
+			      EventHandler__default.default.off(this._element, EVENT_KEY);
+			    } // Private
+
+			    _start(event) {
+			      if (!this._supportPointerEvents) {
+			        this._deltaX = event.touches[0].clientX;
+			        return;
+			      }
+			      if (this._eventIsPointerPenTouch(event)) {
+			        this._deltaX = event.clientX;
+			      }
+			    }
+			    _end(event) {
+			      if (this._eventIsPointerPenTouch(event)) {
+			        this._deltaX = event.clientX - this._deltaX;
+			      }
+			      this._handleSwipe();
+			      index.execute(this._config.endCallback);
+			    }
+			    _move(event) {
+			      this._deltaX = event.touches && event.touches.length > 1 ? 0 : event.touches[0].clientX - this._deltaX;
+			    }
+			    _handleSwipe() {
+			      const absDeltaX = Math.abs(this._deltaX);
+			      if (absDeltaX <= SWIPE_THRESHOLD) {
+			        return;
+			      }
+			      const direction = absDeltaX / this._deltaX;
+			      this._deltaX = 0;
+			      if (!direction) {
+			        return;
+			      }
+			      index.execute(direction > 0 ? this._config.rightCallback : this._config.leftCallback);
+			    }
+			    _initEvents() {
+			      if (this._supportPointerEvents) {
+			        EventHandler__default.default.on(this._element, EVENT_POINTERDOWN, event => this._start(event));
+			        EventHandler__default.default.on(this._element, EVENT_POINTERUP, event => this._end(event));
+			        this._element.classList.add(CLASS_NAME_POINTER_EVENT);
+			      } else {
+			        EventHandler__default.default.on(this._element, EVENT_TOUCHSTART, event => this._start(event));
+			        EventHandler__default.default.on(this._element, EVENT_TOUCHMOVE, event => this._move(event));
+			        EventHandler__default.default.on(this._element, EVENT_TOUCHEND, event => this._end(event));
+			      }
+			    }
+			    _eventIsPointerPenTouch(event) {
+			      return this._supportPointerEvents && (event.pointerType === POINTER_TYPE_PEN || event.pointerType === POINTER_TYPE_TOUCH);
+			    } // Static
+
+			    static isSupported() {
+			      return 'ontouchstart' in document.documentElement || navigator.maxTouchPoints > 0;
+			    }
+			  }
+			  return Swipe;
+			});
+	} (swipe));
+		return swipe.exports;
+	}
+
+	/*!
+	  * Bootstrap carousel.js v5.2.3 (https://getbootstrap.com/)
+	  * Copyright 2011-2022 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+	  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+	  */
+
+	(function (module, exports) {
+		(function (global, factory) {
+		  module.exports = factory(requireUtil(), requireEventHandler(), requireManipulator(), requireSelectorEngine(), requireSwipe(), requireBaseComponent()) ;
+		})(commonjsGlobal, function (index, EventHandler, Manipulator, SelectorEngine, Swipe, BaseComponent) {
+
+		  const _interopDefaultLegacy = e => e && typeof e === 'object' && 'default' in e ? e : {
+		    default: e
+		  };
+		  const EventHandler__default = /*#__PURE__*/_interopDefaultLegacy(EventHandler);
+		  const Manipulator__default = /*#__PURE__*/_interopDefaultLegacy(Manipulator);
+		  const SelectorEngine__default = /*#__PURE__*/_interopDefaultLegacy(SelectorEngine);
+		  const Swipe__default = /*#__PURE__*/_interopDefaultLegacy(Swipe);
+		  const BaseComponent__default = /*#__PURE__*/_interopDefaultLegacy(BaseComponent);
+
+		  /**
+		   * --------------------------------------------------------------------------
+		   * Bootstrap (v5.2.3): carousel.js
+		   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+		   * --------------------------------------------------------------------------
+		   */
+		  /**
+		   * Constants
+		   */
+
+		  const NAME = 'carousel';
+		  const DATA_KEY = 'bs.carousel';
+		  const EVENT_KEY = `.${DATA_KEY}`;
+		  const DATA_API_KEY = '.data-api';
+		  const ARROW_LEFT_KEY = 'ArrowLeft';
+		  const ARROW_RIGHT_KEY = 'ArrowRight';
+		  const TOUCHEVENT_COMPAT_WAIT = 500; // Time for mouse compat events to fire after touch
+
+		  const ORDER_NEXT = 'next';
+		  const ORDER_PREV = 'prev';
+		  const DIRECTION_LEFT = 'left';
+		  const DIRECTION_RIGHT = 'right';
+		  const EVENT_SLIDE = `slide${EVENT_KEY}`;
+		  const EVENT_SLID = `slid${EVENT_KEY}`;
+		  const EVENT_KEYDOWN = `keydown${EVENT_KEY}`;
+		  const EVENT_MOUSEENTER = `mouseenter${EVENT_KEY}`;
+		  const EVENT_MOUSELEAVE = `mouseleave${EVENT_KEY}`;
+		  const EVENT_DRAG_START = `dragstart${EVENT_KEY}`;
+		  const EVENT_LOAD_DATA_API = `load${EVENT_KEY}${DATA_API_KEY}`;
+		  const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`;
+		  const CLASS_NAME_CAROUSEL = 'carousel';
+		  const CLASS_NAME_ACTIVE = 'active';
+		  const CLASS_NAME_SLIDE = 'slide';
+		  const CLASS_NAME_END = 'carousel-item-end';
+		  const CLASS_NAME_START = 'carousel-item-start';
+		  const CLASS_NAME_NEXT = 'carousel-item-next';
+		  const CLASS_NAME_PREV = 'carousel-item-prev';
+		  const SELECTOR_ACTIVE = '.active';
+		  const SELECTOR_ITEM = '.carousel-item';
+		  const SELECTOR_ACTIVE_ITEM = SELECTOR_ACTIVE + SELECTOR_ITEM;
+		  const SELECTOR_ITEM_IMG = '.carousel-item img';
+		  const SELECTOR_INDICATORS = '.carousel-indicators';
+		  const SELECTOR_DATA_SLIDE = '[data-bs-slide], [data-bs-slide-to]';
+		  const SELECTOR_DATA_RIDE = '[data-bs-ride="carousel"]';
+		  const KEY_TO_DIRECTION = {
+		    [ARROW_LEFT_KEY]: DIRECTION_RIGHT,
+		    [ARROW_RIGHT_KEY]: DIRECTION_LEFT
+		  };
+		  const Default = {
+		    interval: 5000,
+		    keyboard: true,
+		    pause: 'hover',
+		    ride: false,
+		    touch: true,
+		    wrap: true
+		  };
+		  const DefaultType = {
+		    interval: '(number|boolean)',
+		    // TODO:v6 remove boolean support
+		    keyboard: 'boolean',
+		    pause: '(string|boolean)',
+		    ride: '(boolean|string)',
+		    touch: 'boolean',
+		    wrap: 'boolean'
+		  };
+		  /**
+		   * Class definition
+		   */
+
+		  class Carousel extends BaseComponent__default.default {
+		    constructor(element, config) {
+		      super(element, config);
+		      this._interval = null;
+		      this._activeElement = null;
+		      this._isSliding = false;
+		      this.touchTimeout = null;
+		      this._swipeHelper = null;
+		      this._indicatorsElement = SelectorEngine__default.default.findOne(SELECTOR_INDICATORS, this._element);
+		      this._addEventListeners();
+		      if (this._config.ride === CLASS_NAME_CAROUSEL) {
+		        this.cycle();
+		      }
+		    } // Getters
+
+		    static get Default() {
+		      return Default;
+		    }
+		    static get DefaultType() {
+		      return DefaultType;
+		    }
+		    static get NAME() {
+		      return NAME;
+		    } // Public
+
+		    next() {
+		      this._slide(ORDER_NEXT);
+		    }
+		    nextWhenVisible() {
+		      // FIXME TODO use `document.visibilityState`
+		      // Don't call next when the page isn't visible
+		      // or the carousel or its parent isn't visible
+		      if (!document.hidden && index.isVisible(this._element)) {
+		        this.next();
+		      }
+		    }
+		    prev() {
+		      this._slide(ORDER_PREV);
+		    }
+		    pause() {
+		      if (this._isSliding) {
+		        index.triggerTransitionEnd(this._element);
+		      }
+		      this._clearInterval();
+		    }
+		    cycle() {
+		      this._clearInterval();
+		      this._updateInterval();
+		      this._interval = setInterval(() => this.nextWhenVisible(), this._config.interval);
+		    }
+		    _maybeEnableCycle() {
+		      if (!this._config.ride) {
+		        return;
+		      }
+		      if (this._isSliding) {
+		        EventHandler__default.default.one(this._element, EVENT_SLID, () => this.cycle());
+		        return;
+		      }
+		      this.cycle();
+		    }
+		    to(index) {
+		      const items = this._getItems();
+		      if (index > items.length - 1 || index < 0) {
+		        return;
+		      }
+		      if (this._isSliding) {
+		        EventHandler__default.default.one(this._element, EVENT_SLID, () => this.to(index));
+		        return;
+		      }
+		      const activeIndex = this._getItemIndex(this._getActive());
+		      if (activeIndex === index) {
+		        return;
+		      }
+		      const order = index > activeIndex ? ORDER_NEXT : ORDER_PREV;
+		      this._slide(order, items[index]);
+		    }
+		    dispose() {
+		      if (this._swipeHelper) {
+		        this._swipeHelper.dispose();
+		      }
+		      super.dispose();
+		    } // Private
+
+		    _configAfterMerge(config) {
+		      config.defaultInterval = config.interval;
+		      return config;
+		    }
+		    _addEventListeners() {
+		      if (this._config.keyboard) {
+		        EventHandler__default.default.on(this._element, EVENT_KEYDOWN, event => this._keydown(event));
+		      }
+		      if (this._config.pause === 'hover') {
+		        EventHandler__default.default.on(this._element, EVENT_MOUSEENTER, () => this.pause());
+		        EventHandler__default.default.on(this._element, EVENT_MOUSELEAVE, () => this._maybeEnableCycle());
+		      }
+		      if (this._config.touch && Swipe__default.default.isSupported()) {
+		        this._addTouchEventListeners();
+		      }
+		    }
+		    _addTouchEventListeners() {
+		      for (const img of SelectorEngine__default.default.find(SELECTOR_ITEM_IMG, this._element)) {
+		        EventHandler__default.default.on(img, EVENT_DRAG_START, event => event.preventDefault());
+		      }
+		      const endCallBack = () => {
+		        if (this._config.pause !== 'hover') {
+		          return;
+		        } // If it's a touch-enabled device, mouseenter/leave are fired as
+		        // part of the mouse compatibility events on first tap - the carousel
+		        // would stop cycling until user tapped out of it;
+		        // here, we listen for touchend, explicitly pause the carousel
+		        // (as if it's the second time we tap on it, mouseenter compat event
+		        // is NOT fired) and after a timeout (to allow for mouse compatibility
+		        // events to fire) we explicitly restart cycling
+
+		        this.pause();
+		        if (this.touchTimeout) {
+		          clearTimeout(this.touchTimeout);
+		        }
+		        this.touchTimeout = setTimeout(() => this._maybeEnableCycle(), TOUCHEVENT_COMPAT_WAIT + this._config.interval);
+		      };
+		      const swipeConfig = {
+		        leftCallback: () => this._slide(this._directionToOrder(DIRECTION_LEFT)),
+		        rightCallback: () => this._slide(this._directionToOrder(DIRECTION_RIGHT)),
+		        endCallback: endCallBack
+		      };
+		      this._swipeHelper = new Swipe__default.default(this._element, swipeConfig);
+		    }
+		    _keydown(event) {
+		      if (/input|textarea/i.test(event.target.tagName)) {
+		        return;
+		      }
+		      const direction = KEY_TO_DIRECTION[event.key];
+		      if (direction) {
+		        event.preventDefault();
+		        this._slide(this._directionToOrder(direction));
+		      }
+		    }
+		    _getItemIndex(element) {
+		      return this._getItems().indexOf(element);
+		    }
+		    _setActiveIndicatorElement(index) {
+		      if (!this._indicatorsElement) {
+		        return;
+		      }
+		      const activeIndicator = SelectorEngine__default.default.findOne(SELECTOR_ACTIVE, this._indicatorsElement);
+		      activeIndicator.classList.remove(CLASS_NAME_ACTIVE);
+		      activeIndicator.removeAttribute('aria-current');
+		      const newActiveIndicator = SelectorEngine__default.default.findOne(`[data-bs-slide-to="${index}"]`, this._indicatorsElement);
+		      if (newActiveIndicator) {
+		        newActiveIndicator.classList.add(CLASS_NAME_ACTIVE);
+		        newActiveIndicator.setAttribute('aria-current', 'true');
+		      }
+		    }
+		    _updateInterval() {
+		      const element = this._activeElement || this._getActive();
+		      if (!element) {
+		        return;
+		      }
+		      const elementInterval = Number.parseInt(element.getAttribute('data-bs-interval'), 10);
+		      this._config.interval = elementInterval || this._config.defaultInterval;
+		    }
+		    _slide(order, element = null) {
+		      if (this._isSliding) {
+		        return;
+		      }
+		      const activeElement = this._getActive();
+		      const isNext = order === ORDER_NEXT;
+		      const nextElement = element || index.getNextActiveElement(this._getItems(), activeElement, isNext, this._config.wrap);
+		      if (nextElement === activeElement) {
+		        return;
+		      }
+		      const nextElementIndex = this._getItemIndex(nextElement);
+		      const triggerEvent = eventName => {
+		        return EventHandler__default.default.trigger(this._element, eventName, {
+		          relatedTarget: nextElement,
+		          direction: this._orderToDirection(order),
+		          from: this._getItemIndex(activeElement),
+		          to: nextElementIndex
+		        });
+		      };
+		      const slideEvent = triggerEvent(EVENT_SLIDE);
+		      if (slideEvent.defaultPrevented) {
+		        return;
+		      }
+		      if (!activeElement || !nextElement) {
+		        // Some weirdness is happening, so we bail
+		        // todo: change tests that use empty divs to avoid this check
+		        return;
+		      }
+		      const isCycling = Boolean(this._interval);
+		      this.pause();
+		      this._isSliding = true;
+		      this._setActiveIndicatorElement(nextElementIndex);
+		      this._activeElement = nextElement;
+		      const directionalClassName = isNext ? CLASS_NAME_START : CLASS_NAME_END;
+		      const orderClassName = isNext ? CLASS_NAME_NEXT : CLASS_NAME_PREV;
+		      nextElement.classList.add(orderClassName);
+		      index.reflow(nextElement);
+		      activeElement.classList.add(directionalClassName);
+		      nextElement.classList.add(directionalClassName);
+		      const completeCallBack = () => {
+		        nextElement.classList.remove(directionalClassName, orderClassName);
+		        nextElement.classList.add(CLASS_NAME_ACTIVE);
+		        activeElement.classList.remove(CLASS_NAME_ACTIVE, orderClassName, directionalClassName);
+		        this._isSliding = false;
+		        triggerEvent(EVENT_SLID);
+		      };
+		      this._queueCallback(completeCallBack, activeElement, this._isAnimated());
+		      if (isCycling) {
+		        this.cycle();
+		      }
+		    }
+		    _isAnimated() {
+		      return this._element.classList.contains(CLASS_NAME_SLIDE);
+		    }
+		    _getActive() {
+		      return SelectorEngine__default.default.findOne(SELECTOR_ACTIVE_ITEM, this._element);
+		    }
+		    _getItems() {
+		      return SelectorEngine__default.default.find(SELECTOR_ITEM, this._element);
+		    }
+		    _clearInterval() {
+		      if (this._interval) {
+		        clearInterval(this._interval);
+		        this._interval = null;
+		      }
+		    }
+		    _directionToOrder(direction) {
+		      if (index.isRTL()) {
+		        return direction === DIRECTION_LEFT ? ORDER_PREV : ORDER_NEXT;
+		      }
+		      return direction === DIRECTION_LEFT ? ORDER_NEXT : ORDER_PREV;
+		    }
+		    _orderToDirection(order) {
+		      if (index.isRTL()) {
+		        return order === ORDER_PREV ? DIRECTION_LEFT : DIRECTION_RIGHT;
+		      }
+		      return order === ORDER_PREV ? DIRECTION_RIGHT : DIRECTION_LEFT;
+		    } // Static
+
+		    static jQueryInterface(config) {
+		      return this.each(function () {
+		        const data = Carousel.getOrCreateInstance(this, config);
+		        if (typeof config === 'number') {
+		          data.to(config);
+		          return;
+		        }
+		        if (typeof config === 'string') {
+		          if (data[config] === undefined || config.startsWith('_') || config === 'constructor') {
+		            throw new TypeError(`No method named "${config}"`);
+		          }
+		          data[config]();
+		        }
+		      });
+		    }
+		  }
+		  /**
+		   * Data API implementation
+		   */
+
+		  EventHandler__default.default.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_SLIDE, function (event) {
+		    const target = index.getElementFromSelector(this);
+		    if (!target || !target.classList.contains(CLASS_NAME_CAROUSEL)) {
+		      return;
+		    }
+		    event.preventDefault();
+		    const carousel = Carousel.getOrCreateInstance(target);
+		    const slideIndex = this.getAttribute('data-bs-slide-to');
+		    if (slideIndex) {
+		      carousel.to(slideIndex);
+		      carousel._maybeEnableCycle();
+		      return;
+		    }
+		    if (Manipulator__default.default.getDataAttribute(this, 'slide') === 'next') {
+		      carousel.next();
+		      carousel._maybeEnableCycle();
+		      return;
+		    }
+		    carousel.prev();
+		    carousel._maybeEnableCycle();
+		  });
+		  EventHandler__default.default.on(window, EVENT_LOAD_DATA_API, () => {
+		    const carousels = SelectorEngine__default.default.find(SELECTOR_DATA_RIDE);
+		    for (const carousel of carousels) {
+		      Carousel.getOrCreateInstance(carousel);
+		    }
+		  });
+		  /**
+		   * jQuery
+		   */
+
+		  index.defineJQueryPlugin(Carousel);
+		  return Carousel;
+		});
+	} (carousel$1));
+
+	var carousel = carousel$1.exports;
+
+	var collapse$1 = {exports: {}};
 
 	/*!
 	  * Bootstrap collapse.js v5.2.3 (https://getbootstrap.com/)
@@ -11380,7 +11911,34 @@
 	      }
 	    });
 	  }
+
+	  // var imgSlider = document.getElementById('bgImgSlider');
+	  // if(imgSlider) {
+	  //     var swiper = new Swiper(imgSlider, {
+	  //         modules: [Autoplay, EffectFade],
+	  //         spaceBetween: 30,
+	  //         draggable: false,
+	  //         allowTouchMove: false,
+	  //         simulateTouch: false,
+	  //         touchStartPreventDefault: false,
+	  //         noSwiping: true,
+	  //         noSwipingClass: 'no-swiping',
+	  //         loop: true,
+	  //         autoplay: {
+	  //           delay: 4000,
+	  //           disableOnInteraction: false,
+	  //         },
+	  //         slidesPerView: 1,
+	  //         effect: 'fade',
+	  //         fadeEffect: {
+	  //           crossFade: true,
+
+	  //         },
+	  //         speed: 1000,
+	  //     });
+	  // }
 	});
+
 	var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
 	tooltipTriggerList.map(function (tooltipTriggerEl) {
 	  return new Tooltip(tooltipTriggerEl);
@@ -11412,6 +11970,7 @@
 
 	exports.Alert = alert;
 	exports.Button = button;
+	exports.Carousel = carousel;
 	exports.Collapse = collapse;
 	exports.Dropdown = dropdown;
 	exports.Modal = modal;

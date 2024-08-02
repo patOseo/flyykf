@@ -1,0 +1,16 @@
+.block-img-slider-container {
+    max-height: 800px;
+    #imgSliderCarousel {
+        overflow: hidden;
+
+        img {
+            object-fit: cover !important;
+            object-position: center !important;
+        }
+    }
+
+    .content-container {
+        background: linear-gradient(rgba($darkblue, .98) 0%, rgba($darkblue, .75) 90%);
+        z-index: 1;
+    }
+}
