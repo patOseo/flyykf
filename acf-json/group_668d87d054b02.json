@@ -21,29 +21,6 @@
             "selected": 0
         },
         {
-            "key": "field_66acdd196e1bf",
-            "label": "Header Style",
-            "name": "header_style",
-            "aria-label": "",
-            "type": "button_group",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "white": "White with black icons",
-                "blue": "Blue with white icons"
-            },
-            "default_value": "",
-            "return_format": "value",
-            "allow_null": 0,
-            "layout": "horizontal"
-        },
-        {
             "key": "field_668d87d0e818d",
             "label": "Default Background Image",
             "name": "default_bg",
@@ -246,5 +223,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1722607151
+    "modified": 1722626748
 }
