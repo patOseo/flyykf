@@ -12571,6 +12571,12 @@ body .entry-content p a {
 .quicknav svg path {
   stroke: #f5f5f7;
 }
+.quicknav .open-menu-icon .open-menu {
+  transition: 0.3s;
+}
+.quicknav .open-menu-icon:hover .open-menu {
+  color: #f0d22d !important;
+}
 .quicknav .quicknav-icon p {
   transition: color 0.3s;
 }

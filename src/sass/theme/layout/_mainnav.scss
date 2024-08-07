@@ -20,6 +20,17 @@
         }
     }
 
+    .open-menu-icon {
+        .open-menu {
+            transition: .3s;
+        }
+        &:hover {
+            .open-menu {
+                color: $yellow !important;
+            }
+        }
+    }
+
     .quicknav-icon {
         p {
             transition: color .3s;

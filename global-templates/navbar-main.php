@@ -56,16 +56,16 @@ $container = get_theme_mod( 'understrap_container_type' );
 					</div>
 				</div>
 				<div class="col d-flex flex-column">
-					<div class="text-center quicknav-icon position-relative">
+					<div class="text-center quicknav-icon open-menu-icon position-relative">
 						<img class="mb-2" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/icons/menu.svg" alt="Info" width="auto" height="auto">
-						<p
+						<button
 						type="button"
 						data-bs-toggle="offcanvas"
 						data-bs-target="#navbarNavOffcanvas"
 						aria-controls="navbarNavOffcanvas"
 						aria-expanded="false"
 						aria-label="<?php esc_attr_e( 'Open menu', 'understrap' ); ?>" 
-						class="mt-auto mb-0 fs-xs ls-1 fw-bold text-uppercase stretched-link">Menu</p>
+						class="d-block mt-0 mb-0 p-0 fs-xs ls-1 fw-bold text-uppercase text-white stretched-link bg-transparent border-0 open-menu">Menu</button>
 					</div>
 				</div>
 			</div>
