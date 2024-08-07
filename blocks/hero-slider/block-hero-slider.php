@@ -27,8 +27,8 @@ if ( ! empty( $block['className'] ) ) {
                     <div class="swiper-slide d-flex align-items-center" style="background: linear-gradient(rgba(0,0,0,.25), rgba(0,0,0,.25)), url(<?php the_sub_field('image', 'full'); ?>) no-repeat center/cover;">
                         <div class="container position-relative mt-6">
                             <div class="row">
-                                <div class="col-lg-4">
-                                    <h2 class="slide-heading mb-4 display-1 text-white lh-1"><?php echo get_sub_field('heading'); ?></h2>
+                                <div class="col-lg-6">
+                                    <h2 class="slide-heading mb-4 display-1 ff-abril text-white lh-1"><?php echo get_sub_field('heading'); ?></h2>
                                     <?php if(get_sub_field('button_text')): ?>
                                         <a href="<?php if(get_sub_field('button_link')): echo esc_url(get_sub_field('button_link')); endif; ?>" class="btn btn-primary btn-lg fw-bold text-white rounded-0"><?php echo get_sub_field('button_text'); ?></a>
                                     <?php endif; ?>
