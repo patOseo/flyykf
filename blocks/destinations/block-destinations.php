@@ -91,16 +91,16 @@ endif; ?>
 <div class="<?php echo esc_attr($class_name); ?>">
     <?php if($map_dests):  // If we have destinations, render the map ?>
     <div class="destinations-map shadow mt-n4 mx-n2 mt-lg-n5 mx-lg-n4 mb-5">
-        <div class="ykf-map rounded-2" id="ykf-map" data-zoom="16">
+        <div class="ykf-map rounded-2" id="ykf-map" role="application" tabindex="0" aria-label="Map of YKF destinations with a map marker for each destination" data-zoom="16">
             <?php $ykf = get_field('ykf_airport_address', 'option'); // This is the marker for the YKF Airport. We grab latlng values from the Options field. ?>
-                <div class="marker" data-lat="<?= $ykf['lat']; ?>" data-lng="<?= $ykf['lng']; ?>" data-city="Waterloo, ON" data-airport-code="YKF" data-type="origin"></div>
+                <div class="marker" data-lat="<?= $ykf['lat']; ?>" data-lng="<?= $ykf['lng']; ?>" data-city="Waterloo, ON" data-airport-code="YKF" data-type="origin" aria-label="Map marker for YKF Airport in Waterloo, ON"></div>
 
             <?php foreach($map_dests as $map_dest): // We add a marker for each destination ?>
-                <div class="marker" data-enabled="<?php echo $map_dest['enabled']; ?>" data-lat="<?php echo $map_dest['lat']; ?>" data-lng="<?php echo $map_dest['lng']; ?>" data-type="destination" data-city="<?php echo $map_dest['city']; ?>" data-airport-code="<?php echo $map_dest['airport_code']; ?>"></div>
+                <div class="marker" data-enabled="<?php echo $map_dest['enabled']; ?>" data-lat="<?php echo $map_dest['lat']; ?>" data-lng="<?php echo $map_dest['lng']; ?>" data-type="destination" data-city="<?php echo $map_dest['city']; ?>" data-airport-code="<?php echo $map_dest['airport_code']; ?>" aria-label="Map marker for <?php echo $map_dest['city']; ?>"></div>
             <?php endforeach; ?>
 
             <?php if(isset($non_map_dests) && get_field('show_greyed_out_destinations') != 0): foreach($non_map_dests as $non_map_dest): // We add a marker for each disabled destination ?>
-                <div class="marker" data-enabled="<?php echo $non_map_dest['enabled']; ?>" data-lat="<?php echo $non_map_dest['lat']; ?>" data-lng="<?php echo $non_map_dest['lng']; ?>" data-type="destination" data-city="<?php echo $non_map_dest['city']; ?>" data-airport-code="<?php echo $non_map_dest['airport_code']; ?>"></div>
+                <div class="marker" data-enabled="<?php echo $non_map_dest['enabled']; ?>" data-lat="<?php echo $non_map_dest['lat']; ?>" data-lng="<?php echo $non_map_dest['lng']; ?>" data-type="destination" data-city="<?php echo $non_map_dest['city']; ?>" data-airport-code="<?php echo $non_map_dest['airport_code']; ?>" aria-label="Disabled map marker for <?php echo $non_map_dest['city']; ?>"></div>
             <?php endforeach; endif; ?>
         </div>
     </div>

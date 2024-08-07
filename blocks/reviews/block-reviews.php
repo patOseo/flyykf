@@ -35,8 +35,8 @@ if ( ! empty( $block['className'] ) ) {
                     </div>
                 <?php endwhile; ?>
             </div>
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
+            <button class="swiper-button-prev bg-transparent border-0 p-0 m-0" aria-label="Previous review"></button>
+            <button class="swiper-button-next bg-transparent border-0 p-0 m-0" aria-label="Next review"></button>
         </div>
         <div class="pt-5">
             <div class="swiper-pagination reviews-pagination"></div>
