@@ -4,4 +4,13 @@
 body {
     overflow: initial !important;
     padding-right: initial !important;
+
+    .entry-content {
+        p {
+            a {
+                text-decoration: underline !important;
+                text-decoration-color: rgba($primary, 55%) !important;
+            }
+        }
+    }
 }

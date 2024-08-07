@@ -11911,51 +11911,24 @@
 	      }
 	    });
 	  }
-
-	  // var imgSlider = document.getElementById('bgImgSlider');
-	  // if(imgSlider) {
-	  //     var swiper = new Swiper(imgSlider, {
-	  //         modules: [Autoplay, EffectFade],
-	  //         spaceBetween: 30,
-	  //         draggable: false,
-	  //         allowTouchMove: false,
-	  //         simulateTouch: false,
-	  //         touchStartPreventDefault: false,
-	  //         noSwiping: true,
-	  //         noSwipingClass: 'no-swiping',
-	  //         loop: true,
-	  //         autoplay: {
-	  //           delay: 4000,
-	  //           disableOnInteraction: false,
-	  //         },
-	  //         slidesPerView: 1,
-	  //         effect: 'fade',
-	  //         fadeEffect: {
-	  //           crossFade: true,
-
-	  //         },
-	  //         speed: 1000,
-	  //     });
-	  // }
 	});
-
 	var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
 	tooltipTriggerList.map(function (tooltipTriggerEl) {
 	  return new Tooltip(tooltipTriggerEl);
 	});
 
 	// When scrolling past 20px, add class .bg-darkblue to #main-nav
-	window.addEventListener('scroll', function () {
-	  if (window.pageYOffset > 20) {
-	    var mainNav = document.getElementById('main-nav');
-	    mainNav.classList.add('bg-darkblue');
-	    mainNav.classList.add('shadow-sm');
-	  } else {
-	    var mainNav = document.getElementById('main-nav');
-	    mainNav.classList.remove('bg-darkblue');
-	    mainNav.classList.remove('shadow-sm');
-	  }
-	});
+	// window.addEventListener('scroll', function() {
+	//     if (window.pageYOffset > 20) {
+	//         var mainNav = document.getElementById('main-nav');
+	//         mainNav.classList.add('bg-darkblue');
+	//         mainNav.classList.add('shadow-sm');
+	//     } else {
+	//         var mainNav = document.getElementById('main-nav');
+	//         mainNav.classList.remove('bg-darkblue');
+	//         mainNav.classList.remove('shadow-sm');
+	//     }
+	// });
 
 	// jQuery specifc code
 	jQuery(function ($) {

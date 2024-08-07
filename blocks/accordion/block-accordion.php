@@ -34,7 +34,7 @@ if(get_field('button_size') == 'large') {
 			<div class="accordion-card">
 				<div class="hover position-relative mb-3 bg-light" id="heading<?php echo $i; ?>">
 					<?php echo $htmltagopen; ?>
-					<button class="collapsed d-flex align-items-center w-100 py-3 border-0 <?php echo esc_attr($btnsize); ?> fw-bold text-start text-darkblue bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?php echo $i; ?>-<?= $random; ?>" aria-expanded="false" aria-controls="collapse<?php echo $i; ?>">
+					<button class="collapsed d-flex align-items-center w-100 py-3 border-0 <?php echo esc_attr($btnsize); ?> fw-bold text-start text-darkblue bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?php echo $i; ?>-<?= $random; ?>" aria-expanded="false" aria-controls="collapse<?php echo $i; ?>-<?= $random; ?>">
 						<div class="d-inline mx-3 accordion-icon">
 							<svg width="21" height="13" viewBox="0 0 21 13" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<path fill-rule="evenodd" clip-rule="evenodd" d="M10.8488 12.7314L0.878906 2.7615L3.59036 0.0500488L10.8789 7.33859L18.1675 0.0500496L20.8789 2.7615L10.909 12.7314L10.8789 12.7013L10.8488 12.7314Z" fill="#19BEE6"/>

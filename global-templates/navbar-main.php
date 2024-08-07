@@ -12,7 +12,7 @@ defined( 'ABSPATH' ) || exit;
 $container = get_theme_mod( 'understrap_container_type' );
 ?>
 
-<nav id="main-nav" class="navbar navbar-light py-3 py-lg-4" aria-labelledby="main-nav-label">
+<nav id="main-nav" class="navbar navbar-light py-3 py-lg-4 bg-darkblue shadow-sm" aria-labelledby="main-nav-label">
 
 	<p id="main-nav-label" class="screen-reader-text">
 		<?php esc_html_e( 'Main Navigation', 'understrap' ); ?>

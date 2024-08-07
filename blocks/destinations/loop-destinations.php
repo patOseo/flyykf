@@ -21,10 +21,12 @@ $dest = get_field('destination', $dest_id);
             <div class="row mt-auto mx-2 py-4 justify-content-center align-items-center">
                 <?php foreach($dest['airlines'] as $airline):
                     $airline_id = $airline['airline'];
-                    $airline_link = $airline['booking_link'];    
+                    $airline_link = $airline['booking_link'];
+                    $airline_term = get_term($airline_id, 'airline');
+                    $airline_name = $airline_term->name;
                 ?>
                     <div class="col-4">
-                        <?php if($airline_link): ?><a <?php if(count($dest['airlines']) == 1) { echo 'class="stretched-link" ';  } ?>href="<?php echo esc_url($airline_link); ?>" target="_blank" rel="noopener noreferrer"><?php endif; ?>
+                        <?php if($airline_link): ?><a <?php if(count($dest['airlines']) == 1) { echo 'class="stretched-link" ';  } ?>href="<?php echo esc_url($airline_link); ?>" target="_blank" rel="noopener noreferrer" aria-label="<?php echo 'Book a flight to ' . $dest['city'] . ' with ' . $airline_name; ?>"><?php endif; ?>
                             <?php echo wp_get_attachment_image(get_field('logo', 'airline_' . $airline_id)['id'], 'medium'); ?>
                         <?php if($airline_link): ?></a><?php endif; ?>
                     </div>
