@@ -12578,6 +12578,12 @@ a.skip-link:not(:focus):not(:focus-within) {
   font-style: normal;
   font-display: swap;
 }
+@font-face {
+  font-family: "Abril Fatface";
+  src: url("../fonts/AbrilFatface-Regular.woff2") format("woff2-variations");
+  font-style: normal;
+  font-display: swap;
+}
 body {
   -webkit-font-smoothing: antialiased;
 }
