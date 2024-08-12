@@ -35,8 +35,16 @@ if ( ! empty( $block['className'] ) ) {
                     </div>
                 <?php endwhile; ?>
             </div>
-            <button class="swiper-button-prev bg-transparent border-0 p-0 m-0" aria-label="Previous review"></button>
-            <button class="swiper-button-next bg-transparent border-0 p-0 m-0" aria-label="Next review"></button>
+            <button class="swiper-button-prev bg-transparent border-0 p-0 m-0" aria-label="Previous review">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#036ab4" class="bi bi-chevron-left" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"/>
+            </svg>
+            </button>
+            <button class="swiper-button-next bg-transparent border-0 p-0 m-0" aria-label="Next review">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#036ab4" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"/>
+            </svg>
+            </button>
         </div>
         <div class="pt-5">
             <div class="swiper-pagination reviews-pagination"></div>

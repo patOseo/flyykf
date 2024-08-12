@@ -170,14 +170,24 @@ function initMarker( $marker, map ) {
 
     // Attach click event directly to the marker
     google.maps.event.addListener(marker, 'click', function() {
-        var destId = 'dest_' + $marker.data('airport-code');
+        var destCode = $marker.data('airport-code');
+        var destId = 'dest_' + destCode;
+        var destType = $marker.data('type');
+        var destCountry = $marker.data('country');
         var dests = $('.destination-card');
         var dest = $('#' + destId);
         if (destId.length > 0) {
+
             if(dests.length < 1) {
-                
-                window.location.href = '/fly-south/';
+                if(destType === 'destination') {
+                    if(destCountry === 'Canada') {
+                        window.location.href = '/fly-across-canada/#dest_' + destCode;
+                    } else {
+                        window.location.href = '/fly-south/#dest_' + destCode;
+                    }
+                }
             }
+
             $('html, body').animate({
                 scrollTop: dest.offset().top - 200
             }, 0);
