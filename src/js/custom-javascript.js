@@ -82,10 +82,22 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 // jQuery specifc code
 jQuery(function($){
     // Smooth anchor scrolling
-	$('a').click(function(){
-	    $('html, body').animate({
-	        scrollTop: $( $(this).attr('href') ).offset().top -200
-	    }, 0, 'linear');
-	    return false;
-	});
+    $(document).ready(function() {
+        // Check if the page loads with an anchor
+        if (window.location.hash) {
+            var target = $(window.location.hash);
+            $('html, body').animate({
+                scrollTop: target.offset().top - 200
+            }, 0, 'linear');
+        }
+
+        // Scroll animation on click
+        $('a').click(function() {
+            var target = $($(this).attr('href'));
+            $('html, body').animate({
+                scrollTop: target.offset().top - 200
+            }, 0, 'linear');
+            return false;
+        });
+    });
 });
