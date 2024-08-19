@@ -25,10 +25,29 @@ $dest = get_field('destination', $dest_id);
                     $airline_term = get_term($airline_id, 'airline');
                     $airline_name = $airline_term->name;
                 ?>
+
+                    <?php if($airline_name == 'WestJet'): ?>
+                        <!-- Modal -->
+                        <div class="modal fade" id="modal<?php echo $dest['airport_code']; ?>" tabindex="-1" aria-labelledby="modal<?php echo $dest['airport_code']; ?>Label" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                              <div class="modal-body overflow-y-scroll" height="600">
+                                <iframe src="https://www.westjet.com/booking-widget/widget.html?locale=en-CA&origin=ykf&destination=<?= $dest['airport_code']; ?>" width="100%" height="720" title="WestJet Booking Widget" style="width:100%"></iframe>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                    <?php endif; ?>
+
                     <div class="col-4">
-                        <?php if($airline_link): ?><a <?php if(count($dest['airlines']) == 1) { echo 'class="stretched-link" ';  } ?>href="<?php echo esc_url($airline_link); ?>" target="_blank" rel="noopener noreferrer" aria-label="<?php echo 'Book a flight to ' . $dest['city'] . ' with ' . $airline_name; ?>"><?php endif; ?>
+                        <?php if($airline_link && $airline_name != 'WestJet'): ?><a <?php if(count($dest['airlines']) == 1) { echo 'class="stretched-link" ';  } ?>href="<?php echo esc_url($airline_link); ?>" target="_blank" rel="noopener noreferrer" aria-label="<?php echo 'Book a flight to ' . $dest['city'] . ' with ' . $airline_name; ?>"><?php endif; ?>
+                        <?php if($airline_name == 'WestJet'): ?><a href="#" role="button" data-bs-toggle="modal" data-bs-target="#modal<?php echo $dest['airport_code']; ?>"><?php endif; ?>
                             <?php echo wp_get_attachment_image(get_field('logo', 'airline_' . $airline_id)['id'], 'medium'); ?>
-                        <?php if($airline_link): ?></a><?php endif; ?>
+                        <?php if($airline_link || $airline_name == 'WestJet'): ?></a><?php endif; ?>
+
                     </div>
                 <?php endforeach; ?>
             </div>
