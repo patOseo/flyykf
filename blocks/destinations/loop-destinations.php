@@ -35,6 +35,7 @@ $dest = get_field('destination', $dest_id);
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                               </div>
                               <div class="modal-body overflow-y-scroll" height="600">
+                              <?php // echo wp_get_attachment_image(get_field('logo', 'airline_' . $airline_id)['id'], 'medium'); ?>
                                 <iframe src="https://www.westjet.com/booking-widget/widget.html?locale=en-CA&origin=ykf&destination=<?= $dest['airport_code']; ?>" width="100%" height="720" title="WestJet Booking Widget" style="width:100%"></iframe>
                               </div>
                             </div>

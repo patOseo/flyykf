@@ -19,6 +19,26 @@
             "layout": "block",
             "sub_fields": [
                 {
+                    "key": "field_66e839ec11062",
+                    "label": "Destination Status",
+                    "name": "destination_status",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "Setting this to \"not operating\" will leave the destination on the map, but greyed-out.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 1,
+                    "ui_on_text": "Operating",
+                    "ui_off_text": "Not Operating",
+                    "ui": 1
+                },
+                {
                     "key": "field_668eea92edc62",
                     "label": "City",
                     "name": "city",
@@ -234,5 +254,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1721241386
+    "modified": 1726495423
 }
