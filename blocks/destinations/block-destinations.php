@@ -44,9 +44,15 @@ $all_dests_ids = $all_dests->posts;
                 'lat' => $address['lat'],
                 'lng' => $address['lng'],
                 'airport_code' => $dest['airport_code'],
-                'enabled' => '1',
                 'dest_id' => $destination
             );
+
+            if($dest['destination_status'] == 1) {
+                $map_dests[count($map_dests) - 1]['enabled'] = '1';
+            } else {
+                $map_dests[count($map_dests) - 1]['enabled'] = '0';
+            }
+
             $map_dests_ids[] = $destination;
         endforeach;
     endwhile;
@@ -82,9 +88,14 @@ $all_dests_ids = $all_dests->posts;
             'lat' => $address['lat'],
             'lng' => $address['lng'],
             'airport_code' => $dest['airport_code'],
-            'enabled' => '1',
             'dest_id' => $dest_id
         );
+
+        if($dest['destination_status'] == 1) {
+            $map_dests[count($map_dests) - 1]['enabled'] = '1';
+        } else {
+            $map_dests[count($map_dests) - 1]['enabled'] = '0';
+        }
     }
 
 endif; ?>

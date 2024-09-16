@@ -20,6 +20,15 @@
             box-shadow: 0 .125rem 1.5rem rgba($darkblue, .6) !important;
             transform: scale(1.05);
         }
+
+        .not-operating {
+            background: rgb(246 246 246 / 82%);
+            z-index: 1;
+
+            .destination-status {
+                background: #212529;
+            }
+        }
     }
 }
 

@@ -12765,6 +12765,13 @@ body .entry-content p a {
   box-shadow: 0 0.125rem 1.5rem rgba(3, 106, 180, 0.6) !important;
   transform: scale(1.05);
 }
+.block-destinations .destination-card .not-operating {
+  background: rgba(246, 246, 246, 0.82);
+  z-index: 1;
+}
+.block-destinations .destination-card .not-operating .destination-status {
+  background: #212529;
+}
 
 .gm-style-iw-c button {
   display: none !important;
