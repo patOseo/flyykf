@@ -42,7 +42,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 				</div>
 
 				<div class="col-12 col-md-4 col-xl px-4 px-xl-6">
-					<p class="lh-lg mb-0">Telephone: <a href="tel:519-575-4781">519-575-4781</a><br>Toll-free: <a href="tel:1-866-648-2256">1-866-648-2256</a><br>Deaf or Hard of Hearing (TTY): <a href="tel:519-575-4608">519-575-4608</a><br>Fax: <strong>519-648-3540</strong></p>
+					<p class="lh-lg mb-0">Telephone: <a href="tel:<?php echo get_field('telephone', 'option'); ?>"><?php echo get_field('telephone', 'option'); ?></a><br>Toll-free: <a href="tel:<?php echo get_field('toll-free', 'option'); ?>"><?php echo get_field('toll-free', 'option'); ?></a><br>Deaf or Hard of Hearing (TTY): <a href="tel:<?php echo get_field('tty', 'option'); ?>"><?php echo get_field('tty', 'option'); ?></a><br>Fax: <strong><?php echo get_field('fax', 'option'); ?></strong></p>
 				</div>
 
 			</div><!-- .row -->

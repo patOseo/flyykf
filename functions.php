@@ -98,3 +98,4 @@ add_action( 'customize_controls_enqueue_scripts', 'understrap_child_customize_co
 @require_once('functions/remove-comments.php');
 @require_once('functions/google-maps.php');
 @require_once 'functions/blocks.php';
+// @require_once('functions/default-block-templates.php');
