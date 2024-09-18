@@ -24,7 +24,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 			<div class="row">
 
 				<div class="col-4 col-xl-2 mb-5 mb-xl-0 px-4 pe-md-6 border-end border-darkerblue">
-					<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/logo/logo-vert.svg" alt="Waterloo International Airport">
+					<a href="https://www.waterlooairport.ca/" target="_blank" rel="noopener noreferrer"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/logo/logo-vert.svg" alt="Waterloo International Airport"></a>
 				</div><!-- col -->
 
 				<div class="col-8 col-md-4 col-xl mb-5 mb-md-0 px-4 px-xl-6">
