@@ -39,6 +39,35 @@
                     "ui": 1
                 },
                 {
+                    "key": "field_66f5a8781bf03",
+                    "label": "Not Operating",
+                    "name": "not_op_msg",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "This message will display on the top corner of the greyed-out destination card.",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_66e839ec11062",
+                                "operator": "!=",
+                                "value": "1"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "Summer Only",
+                    "maxlength": 30,
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
                     "key": "field_668eea92edc62",
                     "label": "City",
                     "name": "city",
@@ -254,5 +283,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1726495423
+    "modified": 1727375839
 }

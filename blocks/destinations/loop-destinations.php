@@ -3,6 +3,13 @@
 $dest_id = $args['dest'];
 $dest = get_field('destination', $dest_id);
 $status = $dest['destination_status'];
+if(!$status) {
+    if($dest['not_op_msg']) {
+        $msg = $dest['not_op_msg'];
+    } else {
+        $msg = 'Not Operating';
+    }
+}
 ?>
 
 <div class="col my-4">
@@ -11,7 +18,7 @@ $status = $dest['destination_status'];
         <div class="not-operating position-absolute top-0 start-0 w-100 h-100 z-1">
             <div class="d-flex justify-content-center align-items-center h-100">
                 <div class="destination-status opacity-75 text-white border fw-bold rounded-0 p-3 top-0 end-0 position-absolute mt-3 me-3">
-                    <p class="mb-0">Not Operating</p>
+                    <p class="mb-0"><?php echo esc_html($msg); ?></p>
                 </div>
             </div>
         </div>
