@@ -40,7 +40,7 @@
                 },
                 {
                     "key": "field_66f5a8781bf03",
-                    "label": "Not Operating",
+                    "label": "Not Operating Message",
                     "name": "not_op_msg",
                     "aria-label": "",
                     "type": "text",
@@ -60,7 +60,7 @@
                         "class": "",
                         "id": ""
                     },
-                    "default_value": "Summer Only",
+                    "default_value": "Not Operating",
                     "maxlength": 30,
                     "allow_in_bindings": 0,
                     "placeholder": "",
@@ -283,5 +283,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1727375839
+    "modified": 1727375960
 }
