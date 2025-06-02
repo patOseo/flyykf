@@ -25,6 +25,26 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 		<div class="quicknav text-light">
 			<div class="row gx-6">
+				<?php if(have_rows('menu_items', 'option')): ?>
+				<?php while(have_rows('menu_items', 'option')): the_row(); ?>
+					<div class="col d-flex flex-column d-none d-lg-block">
+						<div class="text-center quicknav-icon position-relative">
+							<img class="mb-2" src="<?php echo esc_url(get_sub_field('icon')['url']); ?>" alt="<?php echo get_sub_field('icon')['alt']; ?>" width="auto" height="auto">
+							<a href="<?php echo get_sub_field('link')['url']; ?>"<?php if(get_sub_field('link')['target']): echo 'target="' . get_sub_field('link')['target'] . '"'; endif; ?> class="d-block text-light mt-auto mb-0 fs-xs ls-1 fw-bold text-uppercase stretched-link"><?php echo get_sub_field('title'); ?></a>
+							
+							<?php if(get_sub_field('add_sub-menu_links') && have_rows('sub_menu')): ?>
+							<div class="quicknav-dropdown bg-darkblue p-4 text-start text-white position-absolute w-auto">
+								<ul class="list-group">
+									<?php while(have_rows('sub_menu')): the_row(); ?>
+										<li class="menu-item nav-item"><a href="<?php echo get_sub_field('link')['url']; ?>"<?php if(get_sub_field('link')['target']): echo 'target="' . get_sub_field('link')['target'] . '"'; endif; ?> class="mb-0 fs-xs ls-1 fw-bold text-uppercase text-white"><?php echo get_sub_field('title'); ?></a></li>
+									<?php endwhile; ?>
+								</ul>
+							</div>
+							<?php endif; ?>
+						</div>
+					</div>
+				<?php endwhile; ?>
+				<?php else: ?>
 				<div class="col d-flex flex-column d-none d-lg-block">
 					<div class="text-center quicknav-icon position-relative">
 						<img class="mb-2" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/icons/plane.svg" alt="Flights" width="auto" height="auto">
@@ -55,6 +75,9 @@ $container = get_theme_mod( 'understrap_container_type' );
 						<a href="/ground-transportation/" class="d-block text-light mt-auto mb-0 fs-xs ls-1 fw-bold text-uppercase stretched-link">Transit</a>
 					</div>
 				</div>
+				<?php endif; ?>
+
+				<?php /* The pop-out Menu button */ ?>
 				<div class="col d-flex flex-column">
 					<div class="text-center quicknav-icon open-menu-icon position-relative">
 						<img class="mb-2" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/icons/menu.svg" alt="Info" width="auto" height="auto">
@@ -68,6 +91,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 						class="d-block mt-0 mb-0 p-0 fs-xs ls-1 fw-bold text-uppercase text-white stretched-link bg-transparent border-0 open-menu">Menu</button>
 					</div>
 				</div>
+				
 			</div>
 		</div>
 
