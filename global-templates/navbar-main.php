@@ -31,7 +31,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 						<a href="/#flights" class="d-block text-light mt-auto mb-0 fs-xs ls-1 fw-bold text-uppercase stretched-link">Flights</a>
 						<div class="quicknav-dropdown bg-darkblue p-4 text-start text-white position-absolute w-auto">
 							<ul class="list-group">
-								<li class="menu-item nav-item"><a href="/fly-south/" class="mb-0 fs-xs ls-1 fw-bold text-uppercase text-white">Fly South</a></li>
+								<?php /* ?><li class="menu-item nav-item"><a href="/fly-south/" class="mb-0 fs-xs ls-1 fw-bold text-uppercase text-white">Fly South</a></li><?php */ ?>
 								<li class="menu-item nav-item"><a href="/fly-across-canada/" class="mb-0 fs-xs ls-1 fw-bold text-uppercase text-white">Fly Across Canada</a></li>
 							</ul>
 						</div>
