@@ -148,6 +148,45 @@
             ]
         },
         {
+            "key": "field_68e533676e08b",
+            "label": "Destination Map",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "left",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_68e533786e08c",
+            "label": "Label for YKF Map Pin",
+            "name": "ykf_label",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "The text entered here will be shown when hovering over the \"YKF\" logo on the destinations map.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Waterloo, ON",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_668eeb864de96",
             "label": "Google Maps",
             "name": "",
@@ -321,5 +360,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1726667084
+    "modified": 1759851481
 }

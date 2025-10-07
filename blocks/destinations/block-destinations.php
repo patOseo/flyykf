@@ -26,6 +26,11 @@ $all_dests = new WP_Query($args);
 
 $all_dests_ids = $all_dests->posts;
 
+if(get_field('ykf_label', 'option')) {
+    $ykf_label = get_field('ykf_label', 'option');
+} else {
+    $ykf_label = "Waterloo, ON";
+}
 ?>
 
 <?php if($show_dests != 'all' && have_rows('destination_sections')): 
@@ -107,7 +112,7 @@ endif; ?>
     <div class="destinations-map shadow mt-n4 mx-n2 mt-lg-n5 mx-lg-n4 mb-5">
         <div class="ykf-map rounded-2" id="ykf-map" role="application" tabindex="0" aria-label="Map of YKF destinations with a map marker for each destination" data-zoom="16">
             <?php $ykf = get_field('ykf_airport_address', 'option'); // This is the marker for the YKF Airport. We grab latlng values from the Options field. ?>
-                <div class="marker" data-lat="<?= $ykf['lat']; ?>" data-lng="<?= $ykf['lng']; ?>" data-city="Waterloo, ON" data-country="<?= $ykf['country']; ?>" data-airport-code="YKF" data-type="origin" aria-label="Map marker for YKF Airport in Waterloo, ON"></div>
+                <div class="marker" data-lat="<?= $ykf['lat']; ?>" data-lng="<?= $ykf['lng']; ?>" data-city="<?php echo $ykf_label; ?>" data-country="<?= $ykf['country']; ?>" data-airport-code="YKF" data-type="origin" aria-label="Map marker for YKF Airport in Waterloo, ON"></div>
 
             <?php foreach($map_dests as $map_dest): // We add a marker for each destination ?>
                 <div class="marker" data-enabled="<?php echo $map_dest['enabled']; ?>" data-lat="<?php echo $map_dest['lat']; ?>" data-lng="<?php echo $map_dest['lng']; ?>" data-type="destination" data-city="<?php echo $map_dest['city']; ?>" data-country="<?php echo $map_dest['country']; ?>" data-airport-code="<?php echo $map_dest['airport_code']; ?>" aria-label="Map marker for <?php echo $map_dest['city']; ?>"></div>
