@@ -2,7 +2,14 @@
 $api_key = get_field('google_maps_api_key', 'option');
 ?>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=<?php echo $api_key; ?>&region=CA&language=en_CA&loading=async&callback=Function.prototype"></script>
+<script type="text/javascript">
+// Define the readiness gate BEFORE the loader script so the callback below
+// always has something to call, however the two scripts end up ordered.
+window.ykfGoogleMapsReady = window.ykfGoogleMapsReady || new Promise(function( resolve ){
+    window.ykfGoogleMapsLoaded = resolve;
+});
+</script>
+<script async src="https://maps.googleapis.com/maps/api/js?key=<?php echo $api_key; ?>&region=CA&language=en_CA&loading=async&callback=ykfGoogleMapsLoaded"></script>
 <script type="text/javascript">
 (function( $ ) {
 
@@ -235,19 +242,15 @@ function centerMap( map ) {
     }
 }
 
-// Render maps once the DOM and the Maps libraries are both ready.
+// Render maps once the DOM and the Maps API are both ready. The API is
+// loaded async, so whichever finishes last triggers the render.
 $(document).ready(function(){
     var $maps = $('.ykf-map');
     if ( ! $maps.length ) {
         return;
     }
 
-    // loading=async defers the actual libraries, so wait for them before
-    // touching google.maps.Map / Marker / Polyline.
-    Promise.all([
-        google.maps.importLibrary('core'),
-        google.maps.importLibrary('maps')
-    ]).then(function(){
+    window.ykfGoogleMapsReady.then(function(){
         $maps.each(function(){
             initMap( $(this) );
         });
