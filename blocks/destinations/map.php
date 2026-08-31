@@ -2,7 +2,7 @@
 $api_key = get_field('google_maps_api_key', 'option');
 ?>
 
-<script async src="https://maps.googleapis.com/maps/api/js?key=<?php echo $api_key; ?>&region=CA&language=en_CA&callback=Function.prototype"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<?php echo $api_key; ?>&region=CA&language=en_CA&&loading=async&callback=Function.prototype"></script>
 <script type="text/javascript">
 (function( $ ) {
 
