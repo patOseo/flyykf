@@ -2,7 +2,7 @@
 $api_key = get_field('google_maps_api_key', 'option');
 ?>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=<?php echo $api_key; ?>&region=CA&language=en_CA&&loading=async&callback=Function.prototype"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<?php echo $api_key; ?>&region=CA&language=en_CA&loading=async&callback=Function.prototype"></script>
 <script type="text/javascript">
 (function( $ ) {
 
@@ -235,10 +235,22 @@ function centerMap( map ) {
     }
 }
 
-// Render maps on page load.
+// Render maps once the DOM and the Maps libraries are both ready.
 $(document).ready(function(){
-    $('.ykf-map').each(function(){
-        var map = initMap( $(this) );
+    var $maps = $('.ykf-map');
+    if ( ! $maps.length ) {
+        return;
+    }
+
+    // loading=async defers the actual libraries, so wait for them before
+    // touching google.maps.Map / Marker / Polyline.
+    Promise.all([
+        google.maps.importLibrary('core'),
+        google.maps.importLibrary('maps')
+    ]).then(function(){
+        $maps.each(function(){
+            initMap( $(this) );
+        });
     });
 });
 
